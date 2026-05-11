@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#main{
+    height: 95%;
+    width: 93%;
+    margin: 10px;
+    transform: translate(3%, 1%);
+    border-radius: 15px;
+}
+
+#left{
+  width: 60%;
+  height: 100%;
+  background: #FBC50B;
+  border-radius: 15px 0 0 15px;
+  position: absolute;
+}
+
+#right{
+  background: #FAE7B4;
+  height: 100%;
+  border-radius: 15px 15px 15px 15px;
+}
+
+#logo{
+  height: 100px;
+  position: absolute;
+  left: 2%;
+  z-index: 1;
+}
+
+#pikachu{
+  height: 500px;
+  z-index: 1;
+  position: absolute;
+  left: 47%;
+  top: 15%;
+}
+
+#para-1{
+  margin: 190px 0 9px 60px ;
+  
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: 500;
+}
+
+#para-des{
+  font-weight: 100;
+  color: #323232; 
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px; 
+  width: 430px;
+  line-height: 1.6em;
+  word-spacing: 2px;
+}
+
+h1{
+  font-size: 130px;
+}
+
+hr{
+  margin-top: 30px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.content{
+  margin-left: 60px;
+}
+
+#watermark{
+  position: absolute;
+  z-index: 1;
+  height: 160px;
+  top:76%;
+  left: -6%;
+  opacity: 0.1;
+}
+
+#ham{
+  position: absolute;
+  z-index: 1;
+  height: 100px;
+  right: 0;
+}
+
+#dots{
+  position: absolute;
+  z-index: 1;
+  height: 200px;
+  top:35%;
+  right: 0;
+}
