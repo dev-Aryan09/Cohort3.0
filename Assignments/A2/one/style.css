@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "reload";
+  src: url(./racleys.regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "reload", sans-serif;
+  color: #510506;
+  overflow: hidden;
+}
+
+main {
+  height: auto;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.section-1 {
+  margin-top: 31px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  height: 40px;
+}
+
+#lady {
+  height: 30px;
+  width: 70px;
+  border-radius: 20px;
+}
+
+.headings {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.section-1 p {
+  text-align: right;
+  font-size: 10px;
+}
+
+.section-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-2 h1 {
+  margin-left: 118px;
+}
+.section-2 p {
+  width: 33%;
+  margin-left: 118px;
+}
+
+.section-3 {
+  display: flex;
+  margin-bottom: 60px;
+  margin-top: 10px;
+}
+
+.section-3 .left {
+  width: 35%;
+  display: flex;
+  align-items: flex-end;
+}
+.section-3 .left ul {
+  list-style: none;
+  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.section-3 .right {
+  width: 75%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.section-3-img1 {
+  height: 200px;
+  width: 170px;
+  border-radius: 18px;
+}
+.section-3-img2 {
+  height: 200px;
+  width: 170px;
+  background: cyan;
+  border-radius: 18px;
+}
+.section-3-img3 {
+  height: 200px;
+  width: 170px;
+  background: yellow;
+  border-radius: 18px;
+}
+
+.section-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-4 h1 {
+  text-align: center;
+}
+
+.section-4 p {
+  width: 33%;
+  text-align: center;
+  margin: auto;
+}
