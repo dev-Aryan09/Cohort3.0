@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+nav {
+  width: 80%;
+  margin: auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 10%;
+}
+
+.nav-left {
+  width: 50%;
+  display: flex;
+  position: relative;
+  top: 3%;
+}
+
+.nav-left h2 {
+  position: relative;
+  left: 6%;
+}
+
+.nav-left div {
+  border-radius: 18px;
+  background: #f0f0f0;
+  position: relative;
+  left: 16%;
+  padding: 7px 10px;
+}
+
+.nav-left input {
+  border: none;
+  background: #f0f0f0;
+}
+
+.nav-right {
+  width: 50%;
+}
+.nav-right ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  color: #ecbfbb;
+  font-size: 0.8rem;
+  font-weight: 200;
+}
+
+main {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  box-shadow:
+    10px 0 8px -5px rgba(0, 0, 0, 0.5),
+    /* Right shadow */ -10px 0 8px -5px rgba(188, 60, 48, 0.5); /* Left shadow */
+}
+
+main > img {
+  position: absolute;
+  height: 510px;
+  top: 15%;
+  left: 40.4%;
+}
+.sec-1 {
+  width: 50%;
+  background: #fff;
+  /* margin-top: 100px; */
+
+  display: flex;
+  align-items: center;
+}
+
+.sec-1 h1 {
+  writing-mode: sideways-lr;
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  position: relative;
+  left: 9%;
+}
+
+.sec-1 ul {
+  /* list-style: none; */
+  position: relative;
+  left: 22%;
+}
+
+.sec-1 ul li {
+  margin-bottom: 10px;
+}
+
+.sec-1 ul li::marker {
+  color: #bc3c30;
+  font-size: 1.3rem;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: rgb(0, 0, 0, 0.1);
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.sec-2 {
+  width: 50%;
+  background: #bc3c30;
+  /* margin-top: 100px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sec-2 h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 200;
+  font-size: 2.9rem;
+  color: #fff;
+  position: relative;
+  left: 42%;
+  bottom: 0%;
+}
+
+.btm-1 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  left: 28%;
+  bottom: 4%;
+}
+
+.bug-wrapper {
+  text-align: left;
+}
+
+.bug-wrapper > img {
+  height: 120px;
+  position: relative;
+  left: 42%;
+}
+
+.bug-wrapper p {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #fff;
+  position: relative;
+  left: 45%;
+}
+
+.btm-1 hr {
+  border: none;
+  height: 1px;
+  width: 100px;
+  background: #ecbfbb;
+  transform: rotate(90deg);
+  position: relative;
+  right: 5%;
+}
+
+.btm-1 {
+  display: flex;
+  position: relative;
+  top: 5%;
+}
+
+.span-div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #ecbfbb;
+  position: relative;
+  right: 13%;
+  font-size: 0.8rem;
+}
+
+.span-div i {
+  color: #dabc92;
+  font-size: 24px; /* adjust size of the icon */
+  margin-right: 8px;
+  vertical-align: middle; /* keeps icon aligned with text */
+}
+
+.btm-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  left: 42%;
+  top: 10%;
+}
+
+.btm-2 h2 {
+  color: #dabc92;
+}
+
+.btm-2 span {
+  color: #ecbfbb;
+  font-size: 0.8rem;
+}
+
+.btm-2 i {
+  color: #fff;
+  font-size: 26px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+button {
+  height: 40px;
+  width: 170px;
+  border-radius: 10px;
+  border: none;
+  background: #dabc92;
+  font-weight: 500;
+}
