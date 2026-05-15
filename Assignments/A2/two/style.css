@@ -1,0 +1,334 @@
+/* ---- custom font ---- */
+@font-face {
+  font-family: "eagle";
+  src: url(./eagle-horizon-personal-use.regular.ttf);
+}
+
+/* ---- base CSS ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- header related CSS ---- */
+header {
+  height: auto;
+  width: 100%;
+  background: #0b1723;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 10px 0 0;
+  box-shadow:
+    10px 0 8px -5px rgba(11, 23, 35, 0.5),
+    /* Right shadow */ -10px 0 8px -5px rgba(11, 23, 35, 0.5); /* Left shadow */
+}
+
+header p {
+  font-size: 0.65rem;
+  margin: 15px 0 0 47px;
+  color: #75a3ce;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-1 {
+  display: flex;
+  gap: 35px;
+}
+
+.head-1 h1 {
+  color: white;
+  margin-left: 45px;
+  font-size: 3rem;
+  font-weight: 500;
+  /* letter-spacing: 0.1px; */
+}
+
+.head-1 ul {
+  list-style: none;
+  font-size: 0.55rem;
+  line-height: 1.7;
+  color: #97a4b4;
+}
+
+.head-1 hr {
+  width: 0.1px;
+  border: 0;
+  height: 60px;
+  background: #68819d;
+  position: relative;
+  left: 3%;
+}
+
+.head button {
+  background: #131d27;
+  color: white;
+  margin: 0 45px 30px 0;
+  padding: 6px 15px;
+  border-radius: 11px;
+  border: 1px solid #233649;
+  font-size: 0.6rem;
+  height: 30px;
+}
+
+.head button > span > i {
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+/* ---- <main> related CSS ---- */
+main {
+  height: 140%;
+  width: 100%;
+  background: #0b1723;
+  margin: 0 auto;
+  padding: 30px 15px 0 15px;
+  box-shadow:
+    10px 0 8px -5px rgba(11, 23, 35, 0.5),
+    /* Right shadow */ -10px 0 8px -5px rgba(11, 23, 35, 0.5); /* Left shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* section 1 CSS */
+.sec-1 {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.first {
+  height: 50%;
+  width: 38%;
+  border-radius: 10px;
+  background-image: url(./images/first.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.first h1 {
+  color: black;
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: eagle;
+  position: relative;
+  top: 80%;
+  left: 2%;
+}
+
+.second {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.sec-1 img {
+  height: 80%;
+  margin: 0 auto 0 auto;
+  display: block;
+}
+
+.btm-div {
+  height: 20%;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(-45deg, #37536d, #172939);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px 0 7px 10px;
+}
+
+.btm-div h6 {
+  color: white;
+  font-weight: 100;
+  margin-bottom: 3px;
+}
+
+.btm-div p {
+  font-size: 0.5rem;
+  color: #b4c5d5;
+}
+
+#price {
+  margin-top: 2px;
+}
+
+.btm-div span {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: #b4c5d5;
+}
+
+.third {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.fourth {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.fifth {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.sixth {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.seventh {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.eighth {
+  height: 50%;
+  width: 18%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+.nineth {
+  height: 50%;
+  width: 18.5%;
+  background: radial-gradient(ellipse, #c6d1da, #7998b3);
+  border-radius: 10px;
+}
+
+/* section-2 CSS */
+.sec-2 {
+  height: 10%;
+  width: 95%;
+  background: radial-gradient(#193c55, #071621);
+  border: 1px solid #464e56;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  padding: 10px 0;
+}
+
+.sec-2 div {
+  border-right: 1px solid #464e56;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 30px;
+  margin: auto 10px auto 0;
+}
+
+.text {
+  color: rgb(232, 248, 250);
+  width: auto;
+  padding: 8px 50px 8px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+}
+.text h6 {
+  font-size: 0.6rem;
+  font-weight: lighter;
+}
+.text p {
+  font-size: 0.6rem;
+}
+
+/* ---- footer related CSS ---- */
+footer {
+  height: auto;
+  width: 100%;
+  padding: 10px 0;
+  background: radial-gradient(#193c55, #071621);
+  margin: auto;
+  box-shadow:
+    10px 0 8px -5px rgba(11, 23, 35, 0.5),
+    /* Right shadow */ -10px 0 8px -5px rgba(11, 23, 35, 0.5); /* Left shadow */
+}
+
+.footer {
+  height: 100%;
+  width: 93.5%;
+  border: 1px solid #464e56;
+  border-radius:10px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  padding: 0 0 0 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.text-left {
+  color: rgb(232, 248, 250);
+  width: auto;
+  padding: 8px 50px 8px 0;
+  font-size: 0.5rem;
+}
+
+.middle {
+  display: flex;
+  align-items: center;
+}
+
+.middle ul {
+  color: rgb(232, 248, 250);
+  font-size: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.middle ul {
+  list-style: none;
+}
+
+.right {
+  color: rgb(232, 248, 250);
+  padding: 8px 20px 8px 0;
+  font-size: 0.5rem;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.right i {
+  font-size: 15px;
+}
