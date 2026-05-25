@@ -84,3 +84,25 @@ var bigNum = 123456789000000000111111111000n;
 console.log(bigNum);
 */
 
+/*
+var strToNum = Number("50");
+console.log(strToNum);
+
+var numToStr = String(100);
+console.log(numToStr);
+
+var strtoBol = Boolean("true");
+console.log(strtoBol);
+console.log(typeof strtoBol);
+
+console.log("5" + 2);
+console.log("5" - 2);
+console.log(true + 1);
+
+var value = "123abc";
+console.log(Number(value)); // gives NaN
+console.log(parseInt(value));
+
+var px = "500px";
+console.log(parseInt(px));
+*/
