@@ -151,3 +151,42 @@ console.log(x && y); // both must be true
 
 console.log(!x); // revert the boolean value
 */
+
+/*
+var str = "Sheryians Coding School";
+console.log(str.length);
+
+console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+
+console.log(str.includes("JavaScript"));
+
+var word = "Hello World";
+
+console.log(word.slice(6));
+console.log(word.substring(6));
+
+console.log(word.slice(-5));
+console.log(word.substring(-5)); // treats -ve index as 0
+
+var sentance = "apple is a fruit";
+var replaceSentance = sentance.replace("apple", "mango");
+console.log(replaceSentance);
+
+var str2 = "HTML.CSS.JS";
+console.log(str2.split("."));
+
+var extraSpaces = "  abc  ";
+console.log(extraSpaces.trim());
+
+var rept = "Hi";
+console.log(rept.repeat(5));
+
+var str3 = "sheryians";
+console.log(str3.charAt(0));
+
+var name = "Aman";
+var age = 21;
+
+console.log(`My name is ${name} and I am ${age} years old`);
+*/
