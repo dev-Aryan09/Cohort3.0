@@ -106,3 +106,48 @@ console.log(parseInt(value));
 var px = "500px";
 console.log(parseInt(px));
 */
+
+/*
+var num1 = 1;
+var num2 = 2;
+console.log(num1 + num2);
+
+var remainder = 25 % 4;
+console.log(remainder);
+
+var anyNum = 5;
+var squareOfAnyNUm = anyNum ** 2;
+console.log(squareOfAnyNUm);
+
+var digit = 1;
+digit++;
+console.log(digit);
+digit--;
+console.log(digit);
+
+var a = 1;
+var b = (a += 20);
+console.log(b);
+
+var c = 11;
+var d = 22;
+console.log(c > d);
+console.log(c < d);
+console.log(c >= d);
+console.log(c <= d);
+
+var value1 = "9";
+var value2 = 9;
+console.log(value1 === value2);
+
+console.log("10" == 10); // type coercion takes place
+console.log("10" === 10); // check value as well as data type too
+
+var x = true;
+var y = false;
+
+console.log(x || y); // either one is true
+console.log(x && y); // both must be true
+
+console.log(!x); // revert the boolean value
+*/
