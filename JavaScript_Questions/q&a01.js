@@ -190,3 +190,22 @@ var age = 21;
 
 console.log(`My name is ${name} and I am ${age} years old`);
 */
+
+var num = 4.7;
+// console.log(Math.round(4.7));
+
+var sqRoot = Math.sqrt(81);
+// console.log(sqRoot);
+
+var findMax = Math.max(10, 20, 5, 99);
+// console.log(findMax);
+
+var randomNum = Math.floor(Math.random() * (10-1+1)) + 1;
+console.log(randomNum);
+
+var integer = parseInt("99.99", 10);
+// console.log(integer)
+
+// console.log(Number.isInteger(25));
+
+// console.log(+(3.141592).toFixed(2));
