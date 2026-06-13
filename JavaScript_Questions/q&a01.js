@@ -191,6 +191,7 @@ var age = 21;
 console.log(`My name is ${name} and I am ${age} years old`);
 */
 
+/*
 var num = 4.7;
 // console.log(Math.round(4.7));
 
@@ -209,3 +210,31 @@ var integer = parseInt("99.99", 10);
 // console.log(Number.isInteger(25));
 
 // console.log(+(3.141592).toFixed(2));
+*/
+
+// var num = Number(prompt("Enter a number"));
+
+// if (num > 0) {
+//   console.log("positive");
+// } else {
+//   console.log("negative");
+// }
+
+// if (num % 2 === 0) {
+//   console.log("even number");
+// } else {
+//   console.log("odd number");
+// }
+
+
+var age = Number(prompt("Enter your age"));
+
+if (age >= 18) {
+  console.log("you can vote..");
+} else if (age === 0) {
+  console.log("Enter a valid age");
+} else {
+  console.log("under age, can't vote");
+}
+
+
