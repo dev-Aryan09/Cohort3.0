@@ -52,6 +52,15 @@ const editBtn = () => {
       editBoxDiv.append(editBtnsDiv);
 
       const todoItem = e.target.closest(".li");
+
+      // if editable field already exist then won't add another with existing
+      const isExistEditBoxDiv = todoItem.nextElementSibling;
+      if (
+        todoItem.isExistEditBoxDiv &&
+        isExistEditBoxDiv.classList.contains("edit-box")
+      ) {
+        return;
+      }
       todoItem.after(editBoxDiv);
 
       const todoText = e.target.closest(".li").querySelector("h3");
