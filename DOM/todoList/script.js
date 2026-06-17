@@ -1,7 +1,75 @@
 const input = document.querySelector("input");
 const addBtn = document.querySelector("#add");
 const todoList = document.querySelector(".todo-list");
-const editBtn = document.querySelector(".edit");
+
+addBtn.addEventListener("click", () => {
+  if (input.value.trim() === "") return;
+  todoList.innerHTML += ` <div class="li">
+            <h3>${input.value}</h3>
+            <div>
+                <button class="btn edit">Edit</button>
+                <button class="btn del">Delete</button>
+            </div>
+        </div>`;
+  input.value = "";
+
+  deleteBtn();
+  editBtn();
+});
+
+const editBtn = () => {
+  const editBtns = document.querySelectorAll(".edit");
+  editBtns.forEach((editBtn) => {
+    editBtn.addEventListener("click", (e) => {
+      const editBoxDiv = document.createElement("div");
+      editBoxDiv.classList.add("edit-box");
+
+      const editInput = document.createElement("input");
+      editInput.setAttribute("id", "edit-input");
+      editInput.setAttribute("type", "text");
+      editInput.setAttribute("placeholder", "Update todo");
+      editBoxDiv.append(editInput);
+
+      const editBtnsDiv = document.createElement("div");
+      editBtnsDiv.classList.add("edit-btns");
+
+      const cancelBtn = document.createElement("button");
+      cancelBtn.textContent = "Cancel";
+      cancelBtn.setAttribute("id", "cancel");
+      cancelBtn.classList.add("edit-btn");
+      editBtnsDiv.append(cancelBtn);
+      cancelBtn.addEventListener("click", () => cancelButton(editBoxDiv));
+
+      const saveBtn = document.createElement("button");
+      saveBtn.textContent = "Save";
+      saveBtn.setAttribute("id", "save");
+      saveBtn.classList.add("edit-btn");
+      editBtnsDiv.append(saveBtn);
+      saveBtn.addEventListener("click", () =>
+        saveButton(editInput, todoText, editBoxDiv),
+      );
+
+      editBoxDiv.append(editBtnsDiv);
+
+      const todoItem = e.target.closest(".li");
+      todoItem.after(editBoxDiv);
+
+      const todoText = e.target.closest(".li").querySelector("h3");
+    });
+  });
+};
+
+const cancelButton = (editBoxDiv) => {
+  editBoxDiv.remove();
+};
+
+const saveButton = (editInput, todoText, editBoxDiv) => {
+  if (editInput.value.trim() === "") return;
+
+  todoText.textContent = editInput.value;
+
+  editBoxDiv.remove();
+};
 
 const deleteBtn = () => {
   /*
@@ -19,16 +87,3 @@ but it’s inefficient and can cause duplicate actions.
     });
   });
 };
-
-addBtn.addEventListener("click", () => {
-  if (input.value.trim() === "") return;
-  todoList.innerHTML += ` <div class="li">
-            <h3>${input.value}</h3>
-            <div>
-                <button class="btn edit">Edit</button>
-                <button class="btn del">Delete</button>
-            </div>
-        </div>`;
-  input.value = "";
-  deleteBtn();
-});

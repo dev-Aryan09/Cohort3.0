@@ -93,3 +93,27 @@ h3 {
   background-color: darkred;
   color: white;
 }
+
+.edit-box {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  /* position: absolute; */
+  opacity: 0.8;
+  margin-top: -10px;
+}
+
+#edit-input {
+  width: fit-content;
+}
+
+.edit-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.edit-btn {
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+}
