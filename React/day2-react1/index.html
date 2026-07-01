@@ -8,7 +8,15 @@
 
   <body>
     <div id="root"></div>
-
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18",
+          "react-dom": "https://esm.sh/react-dom@18"
+        }
+      }
+    </script>
+    <!-- In React, script file = main.jsx -->
     <script type="module" src="./script.js"></script>
   </body>
 </html>
