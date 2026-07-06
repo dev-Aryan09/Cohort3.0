@@ -1,16 +1,45 @@
-import React from "react";
-import Card from "./Components/Card";
-import Contact from "./Components/Contact";
-import About from "./Components/About";
+import React, { useState } from "react";
 
 const Web = () => {
+  console.log("App rendering...");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div>
-      <h1>Web</h1>
-      <Card />
-      <Contact />
-      <About />
-    </div>
+    <>
+      <div className="flex flex-col gap-4 w-90 p-4 bg-gray-300">
+        <input
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className="border p-2"
+          type="text"
+          placeholder="name"
+        />
+        <input
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          className="border p-2"
+          type="text"
+          placeholder="email"
+        />
+        <input
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          className="border p-2"
+          type="text"
+          placeholder="password"
+        />
+        <button className="border rounded-sm p-1 bg-green-400 text-white uppercase">
+          submit
+        </button>
+      </div>
+      <h1>Name is - {name}</h1>
+      <h1>Email is - {email}</h1>
+      <h1>Name is - {password}</h1>
+    </>
   );
 };
 
