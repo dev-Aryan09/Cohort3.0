@@ -4,29 +4,33 @@ const Web = () => {
   console.log("App rendering...");
   const [formData, setFormData] = useState({});
 
+  const handleChange = (e) => {
+    // passing new reference to the state so that React should know about the change
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  console.log(formData);
+
   return (
     <>
       <div className="flex flex-col gap-4 w-90 p-4 bg-gray-300">
         <input
-          onChange={(e) => {
-            setFormData({ ...formData, name: e.target.value });
-          }}
+          name="name" // will be accessed via e.target.name
+          onChange={handleChange}
           className="border p-2"
           type="text"
           placeholder="name"
         />
         <input
-          onChange={(e) => {
-            setFormData({ ...formData, email: e.target.value });
-          }}
+          name="email"
+          onChange={handleChange}
           className="border p-2"
           type="text"
           placeholder="email"
         />
         <input
-          onChange={(e) => {
-            setFormData({ ...formData, password: e.target.value });
-          }}
+          name="password"
+          onChange={handleChange}
           className="border p-2"
           type="text"
           placeholder="password"
