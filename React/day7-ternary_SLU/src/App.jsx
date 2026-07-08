@@ -7,16 +7,16 @@ import UserCard from "./components/UserCard";
 const App = () => {
   const [flag, setFlag] = useState(false);
   const [users, setUsers] = useState([]);
-  console.log("users", users);
 
   return (
-    <div className="bg-gray-300 h-screen flex justify-center items-center">
-      {flag ? (
-        <Login setFlag={setFlag} />
-      ) : (
-        <Register setFlag={setFlag} setUsers={setUsers} />
-      )}
-      <UserCard/>
+    <div className="bg-gray-300 h-screen ">
+      <Register setFlag={setFlag} setUsers={setUsers} />
+
+      <div className="flex gap-4">
+        {users.map((user, idx) => {
+          return <UserCard user={user} key={idx} />;
+        })}
+      </div>
     </div>
   );
 };
