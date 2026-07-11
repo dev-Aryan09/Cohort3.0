@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Form = () => {
-  console.log("rendering");
-  const [formData, setFormData] = useState({});
+  const [products, setProducts] = useState({});
+  console.log("Products", products);
+
+  const formRef = useRef({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    const productsObj = {
+      productName: formRef.current.productName.value,
+      price: formRef.current.price.value,
+      category: formRef.current.category.value,
+      image: formRef.current.image.value,
+    };
+
+    setProducts(productsObj);
   };
+
   return (
     <div className="w-80 h-screen">
       <form
@@ -15,24 +26,20 @@ const Form = () => {
         className="flex p-6 rounded bg-gray-200 flex-col gap-5"
       >
         <input
-          onChange={(e) =>
-            setFormData({ ...formData, productName: e.target.value })
-          }
+          ref={(e) => (formRef.current.productName = e)}
           className="p-2 border"
           type="text"
           placeholder="Product name"
         />
         <input
-          onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+          ref={(e) => (formRef.current.price = e)}
           className="p-2 border"
           type="text"
           placeholder="Price"
         />
         <span>Select Category</span>
         <select
-          onChange={(e) =>
-            setFormData({ ...formData, category: e.target.value })
-          }
+          ref={(e) => (formRef.current.category = e)}
           className="p-2 border"
         >
           <option value="MEN">Men</option>
@@ -40,7 +47,7 @@ const Form = () => {
           <option value="KIDS">Kids</option>
         </select>
         <input
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+          ref={(e) => (formRef.current.image = e)}
           className="p-2 border"
           type="text"
           placeholder="image"
