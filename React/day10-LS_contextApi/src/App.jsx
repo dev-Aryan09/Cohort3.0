@@ -10,10 +10,11 @@ const App = () => {
   });
   // console.log("users", users);
 
+  const [updatedUser, setUpdatedUser] = useState({});
+
   const deleteUser = (id) => {
-    console.log(id);
-    let filteredUsers = users.filter((user, index) => {
-      return index !== id;
+    let filteredUsers = users.filter((user) => {
+      return user.id !== id;
     });
     console.log(filteredUsers);
     setUsers(filteredUsers);
@@ -21,19 +22,19 @@ const App = () => {
   };
 
   return (
-    <div className="p-3 h-screen bg-[#FFE8B4] flex flex-col gap-4 ">
+    <div className="p-3 min-h-screen bg-[#FFE8B4] flex flex-col gap-4 ">
       <Navbar toggle={toggle} setToggle={setToggle} />
       {toggle ? (
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           {users.length !== 0 ? (
             users.map((user, idx) => {
               return (
                 <UserCard
                   deleteUser={deleteUser}
-                  index={idx}
                   key={idx}
                   user={user}
                   setToggle={setToggle}
+                  setUpdatedUser={setUpdatedUser}
                 />
               );
             })
@@ -45,7 +46,13 @@ const App = () => {
         </div>
       ) : (
         <div className="self-center">
-          <Form users={users} setUsers={setUsers} setToggle={setToggle} />
+          <Form
+            users={users}
+            setUsers={setUsers}
+            setToggle={setToggle}
+            updatedUser={updatedUser}
+            setUpdatedUser={setUpdatedUser}
+          />
         </div>
       )}
     </div>

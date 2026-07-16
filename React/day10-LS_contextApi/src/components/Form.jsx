@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { nanoid } from "nanoid";
 
-const Form = ({ users, setUsers, setToggle }) => {
+const Form = ({ users, setUsers, setToggle, updatedUser, setUpdatedUser }) => {
   // console.log("Form rendering", performance.now());
 
   const {
@@ -11,23 +12,39 @@ const Form = ({ users, setUsers, setToggle }) => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    // defaultValues: {
-    //   name: "Aryan",
-    //   email: "aryan@gmail.com",
-    //   mobile: "1111111111",
-    //   image:
-    //     "https://images.unsplash.com/photo-1783359059225-7794089174bc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    // },
+    defaultValues: updatedUser || {
+      name: "",
+      email: "",
+      mobile: "",
+      image: "",
+    },
   });
 
   const formSubmit = (data) => {
+    if (updatedUser) {
+      alert("updating user");
+      const updated = () => {
+        return users.map((val) => {
+          return val.id === updatedUser.id
+            ? { ...data, id: updatedUser.id } // preserve id when editing so that future updates won't break
+            : val;
+        });
+      };
+      console.log(updated);
+      setUsers(updated());
+      localStorage.setItem("users", JSON.stringify(updated()));
+    } else {
+      alert("creating user");
+      let arr = [...users, { ...data, id: nanoid() }]; // nanoid gives unique id everytime
+      setUsers(arr);
+      localStorage.setItem("users", JSON.stringify(arr));
+    }
+
     // setUsers([...users, data]);
     // localStorage.setItem("users", JSON.stringify(users));
 
-    let arr = [...users, data];
-    setUsers(arr);
-    localStorage.setItem("users", JSON.stringify(arr));
     reset();
+    setUpdatedUser(null);
     setToggle((prev) => !prev);
   };
 
