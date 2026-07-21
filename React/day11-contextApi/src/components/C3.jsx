@@ -1,12 +1,11 @@
 import React from "react";
 import C4 from "./C4";
 
-const C3 = ({ data }) => {
-  console.log(data);
+const C3 = () => {
   return (
     <div>
       <h1>This is component C3</h1>
-      <C4 data={data} />
+      <C4 />
     </div>
   );
 };
