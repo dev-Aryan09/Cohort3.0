@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
 import Cart from "./components/Cart";
+import { MyShop } from "./context/MyShopContext";
 
 const App = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
+  // consuming data via context Api
+  let { isCartOpen, setCartItems } = useContext(MyShop);
+
   let products = [
     {
       id: 1,
@@ -282,11 +283,11 @@ const App = () => {
 
   return (
     <div className="flex flex-col gap-6 p-2 bg-slate-100">
-      <Navbar setIsCartOpen={setIsCartOpen} />
+      <Navbar />
 
       {isCartOpen ? (
         <div>
-          <Cart cartItems={cartItems} />
+          <Cart />
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyShop } from "../context/MyShopContext";
 
-const ProductCard = ({ product, setCartItems }) => {
+const ProductCard = ({ product }) => {
+  // consuming data via context Api
+  const { setCartItems } = useContext(MyShop);
   return (
     <div className="w-64 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden border-3 border-white">
       {/* Image */}

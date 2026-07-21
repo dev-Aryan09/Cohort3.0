@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyShop } from "../context/MyShopContext";
 
-const Navbar = ({ setIsCartOpen }) => {
+const Navbar = () => {
+  // consuming data via context Api
+  let { setIsCartOpen } = useContext(MyShop);
   return (
     <div className="flex justify-between p-4 rounded text-xl bg-slate-600 text-white">
       <div className="cursor-pointer">logo</div>

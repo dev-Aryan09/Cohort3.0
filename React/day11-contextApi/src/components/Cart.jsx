@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyShop } from "../context/MyShopContext";
 
-const Cart = ({ cartItems }) => {
+const Cart = () => {
+  // consuming data via context Api
+  const { cartItems } = useContext(MyShop);
   const total = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   return (
