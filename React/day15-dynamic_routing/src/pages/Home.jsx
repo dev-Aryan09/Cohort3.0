@@ -5,7 +5,6 @@ import ProductsCard from "../components/ProductCard";
 
 const Home = () => {
   const { productsData, setProductsData } = useContext(MyStore);
-  console.log(productsData, performance.now());
 
   let getProductsData = async () => {
     try {
@@ -24,7 +23,7 @@ const Home = () => {
     <div className="p-4">
       <div className="grid grid-cols-5 gap-4">
         {productsData.map((product) => {
-          return <ProductsCard product={product} />;
+          return <ProductsCard key={product.id} product={product} />;
         })}
       </div>
     </div>
