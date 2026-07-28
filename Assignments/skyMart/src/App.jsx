@@ -7,9 +7,9 @@ const App = () => {
   return (
     <div>
       <Navbar />
-
-      <AppRoutes />
-
+      <div className="flex flex-col gap-4 pt-16">
+        <AppRoutes />
+      </div>
       <Footer />
     </div>
   );
