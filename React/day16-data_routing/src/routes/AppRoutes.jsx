@@ -1,0 +1,28 @@
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router";
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Services from "../pages/Services";
+
+const AppRoutes = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+      children: [
+        {
+          path: "about",
+          element: <About />,
+        },
+        {
+          path: "services",
+          element: <Services />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+};
+
+export default AppRoutes;
