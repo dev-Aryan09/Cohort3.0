@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-[#0d0d0d]">
       <Navbar />
       <div className="flex flex-col gap-4 pt-16">
         <AppRoutes />
