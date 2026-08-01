@@ -3,13 +3,7 @@ import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
 
 const Home = () => {
-  return (
-    <div>
-      <Navbar />
-      Home Page
-      <Outlet />
-    </div>
-  );
+  return <div>Home Page</div>;
 };
 
 export default Home;
