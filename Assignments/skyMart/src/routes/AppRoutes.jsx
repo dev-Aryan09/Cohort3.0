@@ -5,15 +5,24 @@ import Shop from "../pages/Shop";
 import About from "../pages/About";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AuthLayout from "../layout/AuthLayout";
+import MainLayout from "../layout/MainLayout";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      {/*this nested route handles our main layout with header and footer  */}
+      <Route path="/main" element={<MainLayout />}>
+        <Route index={true} element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="about" element={<About />} />
+      </Route>
+
+      {/* this nested route will handle our layout without header and footer */}
+      <Route path="/" element={<AuthLayout />}>
+        <Route path="" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
     </Routes>
   );
 };
