@@ -19,7 +19,6 @@ const Register = () => {
         </div>
 
         {/* Card */}
-
         <div className="rounded-3xl border border-white/10 bg-[#111111] p-7 shadow-2xl shadow-black/30">
           <h2 className="text-3xl font-semibold text-white">Create account</h2>
 
@@ -36,7 +35,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Full name"
-                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:shadow-sm focus:shadow-lime-400/50 focus:outline-none focus:ring-1"
+                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
             </div>
 
@@ -50,7 +49,7 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="Email address"
-                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:shadow-sm focus:shadow-lime-400/50 focus:outline-none"
+                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
             </div>
 
@@ -64,7 +63,7 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="Password (min 6 chars)"
-                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-12 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:shadow-sm focus:shadow-lime-400/50 focus:outline-none"
+                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-12 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
 
               <Eye
@@ -83,7 +82,7 @@ const Register = () => {
               <input
                 type="password"
                 placeholder="Confirm password"
-                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:shadow-sm focus:shadow-lime-400/50 focus:outline-none"
+                className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
             </div>
 
@@ -103,7 +102,7 @@ const Register = () => {
           <p className="mt-5 text-sm text-center text-neutral-400">
             Already have an account?{" "}
             <Link
-              to="/login"
+              to="/"
               className="font-semibold text-lime-400 hover:underline"
             >
               Sign In

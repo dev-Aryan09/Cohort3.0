@@ -93,7 +93,7 @@ const Login = () => {
                 <input
                   type="email"
                   placeholder="Email address"
-                  className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-4 text-md text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 "
+                  className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-4 text-md text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
                 />
               </div>
 
@@ -104,7 +104,7 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-14 text-md text-white  placeholder:text-neutral-500 outline-none transition focus:border-lime-400"
+                  className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-14 text-md text-white  placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
                 />
 
                 <Eye className="absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 cursor-pointer text-gray-500" />
