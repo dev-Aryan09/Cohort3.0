@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const AuthStore = createContext();
 
 export const AuthProvider = ({ children }) => {
+  console.log("context rendering...", performance.now());
   const [registeredUsers, setRegisteredUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("registeredUsers")) || [];
   });
@@ -10,8 +11,6 @@ export const AuthProvider = ({ children }) => {
     return JSON.parse(localStorage.getItem("loggedInUser")) || null;
   });
 
-  console.log(registeredUsers, performance.now());
-  console.log(loggedInUser, performance.now());
   return (
     <AuthStore.Provider
       value={{

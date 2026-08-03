@@ -4,7 +4,7 @@ import { Navigate, Outlet } from "react-router";
 
 const ProtectedRoute = () => {
   const { loggedInUser } = useContext(AuthStore);
-  console.log("In protected route", loggedInUser, performance.now());
+  console.log("Protected route rendering...", performance.now());
 
   if (!loggedInUser) {
     alert("User not loggedd in or Invalid credentials");
