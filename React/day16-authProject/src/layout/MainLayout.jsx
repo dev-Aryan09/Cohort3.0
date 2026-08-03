@@ -1,12 +1,16 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import { Outlet } from "react-router";
 
 const MainLayout = () => {
   console.log("main layout rendering...", performance.now());
   return (
-    <div className="p-2">
+    <div className="h-screen p-2 grid grid-cols-[1fr_7fr]">
       <Navbar />
-      <h1>Main Layout</h1>
+
+      <div className="p-2 h-full">
+        <Outlet />
+      </div>
     </div>
   );
 };
