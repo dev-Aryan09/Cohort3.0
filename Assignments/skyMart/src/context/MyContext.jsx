@@ -4,9 +4,12 @@ export const MyStore = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [productsData, setProductsData] = useState([]);
-  const [registeredUsers, setRegisteredUsers] = useState([]);
-
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [registeredUsers, setRegisteredUsers] = useState(() => {
+    return JSON.parse(localStorage.getItem("registeredUsers")) || [];
+  });
+  const [loggedInUser, setLoggedInUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("loggedInUser")) || null;
+  });
 
   console.log("registerd users -> ", registeredUsers);
   console.log("logged in user -> ", loggedInUser);

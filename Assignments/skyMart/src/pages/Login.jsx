@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { Zap, Mail, Lock, Eye, ArrowRight, Star } from "lucide-react";
 import { MyStore } from "../context/MyContext";
 import { useForm } from "react-hook-form";
+import { Bounce, toast } from "react-toastify";
 
 const stats = [
   {
@@ -33,11 +34,33 @@ const Login = () => {
   } = useForm();
 
   const formSubmit = (data) => {
-    setLoggedInUser(data);
+    // checking user EXIST or NOT
+    const isUserLogged = registeredUsers.find((user) => {
+      return user.email === data.email && user.password === data.password;
+    });
+
+    if (!isUserLogged) {
+      toast.error("Invalid credentials!", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "dark",
+      });
+      // reset();
+      return;
+    }
+
+    // isUserLoggedIn is the ACTUAL user object
+    setLoggedInUser(isUserLogged);
+    localStorage.setItem("loggedInUser", JSON.stringify(isUserLogged));
+
+    toast.success("Logged in Successfully", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "dark",
+    });
 
     reset();
-
-    // navigate("/main");
+    navigate("/main");
   };
 
   return (

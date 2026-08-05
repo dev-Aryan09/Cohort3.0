@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { Zap, User, Mail, Lock, Eye, ArrowRight } from "lucide-react";
 import { MyStore } from "../context/MyContext";
 import { useForm } from "react-hook-form";
+import { toast, Bounce } from "react-toastify";
 
 const Register = () => {
   const { registeredUsers, setRegisteredUsers } = useContext(MyStore);
@@ -16,11 +17,35 @@ const Register = () => {
   } = useForm();
 
   const formSubmit = (data) => {
-    setRegisteredUsers([...registeredUsers, data]);
+    // check duplicate user
+    const isUserAlreadyExist = registeredUsers.some((user) => {
+      return user.email === data.email;
+    });
+
+    if (isUserAlreadyExist) {
+      toast.error("Invalid credentials!", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "dark",
+      });
+      return;
+    }
+
+    // adding NEW user data object to previous data
+    const arr = [...registeredUsers, data];
+    setRegisteredUsers(arr);
+
+    localStorage.setItem("registeredUsers", JSON.stringify(arr));
+
+    toast.success("Account Created Successfully!", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "dark",
+      transition: Bounce,
+    });
 
     reset();
-
-    // navigate("/");
+    navigate("/");
   };
 
   return (
