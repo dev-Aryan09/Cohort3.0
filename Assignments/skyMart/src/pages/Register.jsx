@@ -1,9 +1,28 @@
-import React from "react";
-import { Link } from "react-router";
-
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router";
 import { Zap, User, Mail, Lock, Eye, ArrowRight } from "lucide-react";
+import { MyStore } from "../context/MyContext";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+  const { registeredUsers, setRegisteredUsers } = useContext(MyStore);
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const formSubmit = (data) => {
+    setRegisteredUsers([...registeredUsers, data]);
+
+    reset();
+
+    // navigate("/");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0d0d0d] px-6">
       <div className="w-full max-w-md">
@@ -24,7 +43,7 @@ const Register = () => {
 
           <p className="text-neutral-400">Join SkyMart and start shopping</p>
 
-          <form className="mt-8 space-y-4">
+          <form onSubmit={handleSubmit(formSubmit)} className="mt-8 space-y-4">
             {/* Name */}
             <div className="relative">
               <User
@@ -33,10 +52,21 @@ const Register = () => {
               />
 
               <input
+                {...register("fullName", {
+                  required: {
+                    value: true,
+                    message: "Your name is required",
+                  },
+                })}
                 type="text"
                 placeholder="Full name"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
+              {errors.fullName && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.fullName.message}
+                </p>
+              )}
             </div>
 
             {/* Email */}
@@ -47,10 +77,21 @@ const Register = () => {
               />
 
               <input
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is required",
+                  },
+                })}
                 type="email"
                 placeholder="Email address"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Password */}
@@ -61,6 +102,13 @@ const Register = () => {
               />
 
               <input
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Minimum 6 characters is required",
+                  },
+                })}
                 type="password"
                 placeholder="Password (min 6 chars)"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-12 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
@@ -70,6 +118,11 @@ const Register = () => {
                 size={18}
                 className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-neutral-500"
               />
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             {/* Confirm Password */}
@@ -80,10 +133,22 @@ const Register = () => {
               />
 
               <input
+                {...register("confirmPassword", {
+                  required: "Must match with your password",
+                  minLength: {
+                    value: 6,
+                    message: "Minimum 6 characters is required",
+                  },
+                })}
                 type="password"
                 placeholder="Confirm password"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
             </div>
 
             {/* Button */}

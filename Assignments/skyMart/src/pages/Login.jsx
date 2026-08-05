@@ -1,6 +1,8 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router";
 import { Zap, Mail, Lock, Eye, ArrowRight, Star } from "lucide-react";
+import { MyStore } from "../context/MyContext";
+import { useForm } from "react-hook-form";
 
 const stats = [
   {
@@ -18,6 +20,26 @@ const stats = [
 ];
 
 const Login = () => {
+  const { loggedInUser, setLoggedInUser, registeredUsers } =
+    useContext(MyStore);
+
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const formSubmit = (data) => {
+    setLoggedInUser(data);
+
+    reset();
+
+    // navigate("/main");
+  };
+
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white">
       <div className="grid min-h-screen lg:grid-cols-2">
@@ -85,16 +107,30 @@ const Login = () => {
               Enter your credentials to continue
             </p>
 
-            <form className="mt-8 space-y-4">
+            <form
+              onSubmit={handleSubmit(formSubmit)}
+              className="mt-8 space-y-4"
+            >
               {/* Email */}
               <div className="relative">
                 <Mail className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
                 <input
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "Email is required",
+                    },
+                  })}
                   type="email"
                   placeholder="Email address"
                   className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-4 text-md text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
 
               {/* Password */}
@@ -102,12 +138,24 @@ const Login = () => {
                 <Lock className="absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
 
                 <input
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password id required",
+                    },
+                  })}
                   type="password"
                   placeholder="Password"
                   className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-14 text-md text-white  placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
                 />
 
                 <Eye className="absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 cursor-pointer text-gray-500" />
+                {errors.password && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
 
               {/* Button */}
