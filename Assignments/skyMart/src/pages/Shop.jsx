@@ -6,43 +6,19 @@ import ProductCard from "../components/ProductCard";
 import { ChevronDown, CloudHail, Search, X } from "lucide-react";
 import NoProductsFound from "../components/NoProductsFound";
 
-const allowedCategories = [
-  "men's clothing",
-  "women's clothing",
-  "jewelery",
-  "electronics",
-];
-
-const allowedFeatured = ["low-high", "high-low", "top-rated", "lowest-rated"];
-
 const Shop = () => {
-  const { productsData, setProductsData } = useContext(MyStore);
-  const [isLoading, setIsLoading] = useState(true);
+  const { productsData, setProductsData, getProductsData, isLoading } =
+    useContext(MyStore);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [featured, setFeatured] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-
-  const getProductsData = async () => {
-    try {
-      const res = await axios.get("https://fakestoreapi.com/products");
-      setProductsData(res.data);
-    } catch (error) {
-      console.log("Error fetching products...", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleClear = () => {
     setQuery("");
     setCategory("");
     setFeatured("");
   };
-
-  useEffect(() => {
-    getProductsData();
-  }, []);
 
   useEffect(() => {
     let filteredData = productsData;
