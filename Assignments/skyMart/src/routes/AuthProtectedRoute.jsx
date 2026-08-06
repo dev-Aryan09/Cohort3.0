@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { MyStore } from "../context/MyContext";
 import { Navigate } from "react-router";
 
-const PublicRoute = ({ children }) => {
+const AuthProtectedRoute = ({ children }) => {
   const { loggedInUser } = useContext(MyStore);
 
   if (loggedInUser) {
@@ -12,4 +12,4 @@ const PublicRoute = ({ children }) => {
   return children;
 };
 
-export default PublicRoute;
+export default AuthProtectedRoute;

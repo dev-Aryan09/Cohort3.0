@@ -8,7 +8,7 @@ import Register from "../pages/Register";
 import AuthLayout from "../layout/AuthLayout";
 import MainLayout from "../layout/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
-import PublicRoute from "./PublicRoute";
+import AuthProtectedRoute from "./AuthProtectedRoute";
 
 const AppRoutes = () => {
   return (
@@ -31,9 +31,9 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <PublicRoute>
+          <AuthProtectedRoute>
             <AuthLayout />
-          </PublicRoute>
+          </AuthProtectedRoute>
         }
       >
         <Route path="" element={<Login />} />
