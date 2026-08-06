@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Content */}
-      <div className="p-4 text-white sm:p-5">
+      <div className="p-4 text-white sm:px-5 sm:py-3">
         <p className="text-xs text-neutral-500 capitalize font-semibold">
           {product.category}
         </p>
@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
 
         {/* Rating */}
         <div className="mt-2 flex items-center">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(Math.floor(product.rating.rate || 0))].map((_, i) => (
             <Star
               key={i}
               size={12}
@@ -45,12 +45,12 @@ const ProductCard = ({ product }) => {
 
         {/* Bottom */}
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-lg font-black text-lime-400">
+          <h3 className="text-lg font-bold text-lime-400">
             $<span className="">{product.price}</span>
           </h3>
 
-          <button className="flex shrink-0 items-center gap-2 rounded-full bg-lime-400 px-4 py-2 text-sm font-semibold text-black transition hover:bg-lime-300 ">
-            <ShoppingCart size={14} />
+          <button className="flex shrink-0 items-center gap-2 rounded-full bg-lime-400 px-3 py-1.5 text-xs font-semibold text-black transition hover:bg-lime-300 ">
+            <ShoppingCart size={13} />
             <span>Add</span>
           </button>
         </div>
