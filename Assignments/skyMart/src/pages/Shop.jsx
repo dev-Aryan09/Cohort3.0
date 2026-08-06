@@ -3,8 +3,17 @@ import { MyStore } from "../context/MyContext";
 import axios from "axios";
 import ProductsLoader from "../components/ProductsLoader";
 import ProductCard from "../components/ProductCard";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, CloudHail, Search, X } from "lucide-react";
 import NoProductsFound from "../components/NoProductsFound";
+
+const allowedCategories = [
+  "men's clothing",
+  "women's clothing",
+  "jewelery",
+  "electronics",
+];
+
+const allowedFeatured = ["low-high", "high-low", "top-rated", "lowest-rated"];
 
 const Shop = () => {
   const { productsData, setProductsData } = useContext(MyStore);
@@ -12,6 +21,7 @@ const Shop = () => {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [featured, setFeatured] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const getProductsData = async () => {
     try {
@@ -34,16 +44,64 @@ const Shop = () => {
     getProductsData();
   }, []);
 
+  useEffect(() => {
+    let filteredData = productsData;
+
+    if (category) {
+      filteredData = filteredData.filter(
+        (product) => product.category === category,
+      );
+    }
+
+    if (query) {
+      filteredData = filteredData.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase().trim()),
+      );
+    }
+
+    // sorting products
+    if (featured) {
+      switch (featured) {
+        case "low-high":
+          filteredData = [...filteredData].sort(
+            (a, b) => Number(a.price) - Number(b.price),
+          );
+          break;
+        case "high-low":
+          filteredData = [...filteredData].sort(
+            (a, b) => Number(b.price) - Number(a.price),
+          );
+          break;
+        case "top-rated":
+          filteredData = [...filteredData].sort(
+            (a, b) => Number(b.rating.rate) - Number(a.rating.rate),
+          );
+
+          break;
+        case "lowest-rated":
+          filteredData = [...filteredData].sort(
+            (a, b) => Number(a.rating.rate) - Number(b.rating.rate),
+          );
+          break;
+
+        default:
+          break;
+      }
+    }
+    setFilteredProducts(filteredData);
+  }, [productsData, category, query, featured]);
+
   if (isLoading) return <ProductsLoader />;
+
   return (
     <div className="px-4 sm:px-12 md:px-24 lg:px-26 xl:px-36 mb-18">
-      <div className="py-10 flex flex-col gap-2">
+      <div className="py-8 flex flex-col gap-2">
         <h1 className="text-white text-4xl font-semibold ">All Products</h1>
         <p className="text-neutral-500">{productsData.length} products found</p>
       </div>
 
       {/* filters */}
-      <div className="border border-white rounded-2xl mb-2 px-2">
+      <div className="border border-white rounded-2xl mb-1 px-2">
         <div className="sm:flex">
           {/* search bar */}
           <div className="relative w-full max-w-3xl py-4 px-2">
@@ -73,12 +131,10 @@ const Shop = () => {
               className="w-full appearance-none rounded-2xl border border-neutral-700 bg-[#1b1b1b] px-5 py-2 text-white text outline-none transition-all duration-200 focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 cursor-pointer"
             >
               <option value="">All Categories</option>
+              <option value="men's clothing">Men's clothing</option>
+              <option value="women's clothing">Women's clothing</option>
+              <option value="jewelery">Jewelery</option>
               <option value="electronics">Electronics</option>
-              <option value="clothing">Clothing</option>
-              <option value="furniture">Furniture</option>
-              <option value="home">Home</option>
-              <option value="sports">Sports</option>
-              <option value="accessories">Accessories</option>
             </select>
 
             <ChevronDown
@@ -170,9 +226,9 @@ const Shop = () => {
       </div>
 
       {/* products rendering */}
-      {productsData && productsData !== 0 ? (
+      {filteredProducts && filteredProducts.length !== 0 ? (
         <div className="grid grid-cols-2 gap-4 py-4 sm:grid-cols-3  md:grid-cols-3  lg:grid-cols-4  xl:grid-cols-5">
-          {productsData.map((product) => {
+          {filteredProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
         </div>

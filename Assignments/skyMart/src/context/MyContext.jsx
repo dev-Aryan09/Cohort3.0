@@ -11,8 +11,6 @@ export const ContextProvider = ({ children }) => {
     return JSON.parse(localStorage.getItem("loggedInUser")) || null;
   });
 
-  console.log("registerd users -> ", registeredUsers);
-  console.log("logged in user -> ", loggedInUser);
   return (
     <MyStore.Provider
       value={{
