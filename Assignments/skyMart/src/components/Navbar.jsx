@@ -4,7 +4,7 @@ import { ShoppingCart, LogOut, Zap } from "lucide-react";
 import { toast } from "react-toastify";
 import { MyStore } from "../context/MyContext";
 
-const Navbar = () => {
+const Navbar = ({ cartOpen, setCartOpen }) => {
   const { setLoggedInUser } = useContext(MyStore);
   const navigate = useNavigate();
 
@@ -22,7 +22,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0d0d0d] backdrop-blur-xl">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0d0d0d] backdrop-blur-xl transition-opacity duration-300 *:${cartOpen ? "opacity-0 invisible" : "opacity-100 visible"}`}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <NavLink to="/" className="flex items-center gap-3">
@@ -77,7 +79,10 @@ const Navbar = () => {
           </button>
 
           {/* Cart */}
-          <button className="relative rounded-xl border border-white/10 bg-white/5 p-2 transition-all duration-300 hover:bg-white/10 cursor-pointer">
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative rounded-xl border border-white/10 bg-white/5 p-2 transition-all duration-300 hover:bg-white/10 cursor-pointer"
+          >
             <ShoppingCart className="h-5 w-5 text-white" />
 
             <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-lime-400 text-xs font-bold text-black">

@@ -1,7 +1,6 @@
 import { ShoppingBag } from "lucide-react";
 
 const ProductRowCard = ({ product }) => {
-  console.log("product ", product);
   return (
     <div className="group flex items-center justify-between rounded-2xl border border-neutral-200 bg-white p-2 transition-all duration-300 hover:border-lime-400 hover:shadow-md">
       <div className="flex items-center gap-4">
