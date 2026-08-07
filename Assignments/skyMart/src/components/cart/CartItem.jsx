@@ -1,6 +1,24 @@
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { useContext } from "react";
+import { MyStore } from "../../context/MyContext";
+import { toast } from "react-toastify";
 
-const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
+const CartItem = ({ item, onIncrease, onDecrease }) => {
+  const { cartItems, setCartItems } = useContext(MyStore);
+
+  const handleDeleteCartItem = (id) => {
+    const nonDeletedItems = cartItems.filter((item) => {
+      return item.id !== id;
+    });
+    toast.success("Item Deleted!", {
+      position: "top-right",
+      autoClose: 1500,
+      pauseOnHover: false,
+      theme: "dark",
+    });
+    setCartItems(nonDeletedItems);
+  };
+
   return (
     <div className="mb-5 rounded-3xl border border-white bg-[#151515] p-2.5 transition hover:border-lime-400">
       <div className="flex gap-4">
@@ -54,7 +72,7 @@ const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
             {/* Delete */}
             <button
               title="remove item"
-              onClick={() => onRemove(item.id)}
+              onClick={() => handleDeleteCartItem(item.id)}
               className="text-red-400 transition hover:text-red-400 cursor-pointer"
             >
               <Trash2 size={17} />
