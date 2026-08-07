@@ -3,7 +3,7 @@ import React from "react";
 const StatCard = ({ icon, title, value, subtitle, bg, color }) => {
   return (
     <div className="rounded-3xl border border-white bg-[#151515] p-6 transition">
-      <div className="flex items-center gap-4">
+      <div className="flex  gap-4">
         <div
           className={`flex h-12 w-12 items-center justify-center rounded-2xl ${bg}`}
         >
@@ -15,7 +15,7 @@ const StatCard = ({ icon, title, value, subtitle, bg, color }) => {
 
           <h3 className="text-sm text-neutral-400">{title}</h3>
 
-          <p className="text-xs text-neutral-500">{subtitle}</p>
+          <p className="text-xs text-neutral-600">{subtitle}</p>
         </div>
       </div>
     </div>

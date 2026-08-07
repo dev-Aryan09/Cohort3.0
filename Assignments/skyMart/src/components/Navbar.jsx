@@ -4,8 +4,9 @@ import { ShoppingCart, LogOut, Zap } from "lucide-react";
 import { toast } from "react-toastify";
 import { MyStore } from "../context/MyContext";
 
-const Navbar = ({ cartOpen, setCartOpen }) => {
-  const { setLoggedInUser } = useContext(MyStore);
+const Navbar = () => {
+  const { setLoggedInUser, cartOpen, setCartOpen, totalCartQuantity } =
+    useContext(MyStore);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -86,7 +87,7 @@ const Navbar = ({ cartOpen, setCartOpen }) => {
             <ShoppingCart className="h-5 w-5 text-white" />
 
             <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-lime-400 text-xs font-bold text-black">
-              2
+              {totalCartQuantity}
             </span>
           </button>
 

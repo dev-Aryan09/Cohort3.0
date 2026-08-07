@@ -6,8 +6,8 @@ import CartFooter from "./CartFooter";
 import { useContext } from "react";
 import { MyStore } from "../../context/MyContext";
 
-const CartDrawer = ({ cartOpen, setCartOpen }) => {
-  const { cartItems } = useContext(MyStore);
+const CartDrawer = () => {
+  const { cartItems, cartOpen, setCartOpen } = useContext(MyStore);
   return (
     <>
       {/* Backdrop */}

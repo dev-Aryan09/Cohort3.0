@@ -7,8 +7,14 @@ import { ChevronDown, CloudHail, Search, X } from "lucide-react";
 import NoProductsFound from "../components/NoProductsFound";
 
 const Shop = () => {
-  const { productsData, setProductsData, getProductsData, isLoading } =
-    useContext(MyStore);
+  const {
+    productsData,
+    setProductsData,
+    getProductsData,
+    isLoading,
+    cartItems,
+  } = useContext(MyStore);
+
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [featured, setFeatured] = useState("");
@@ -205,7 +211,16 @@ const Shop = () => {
       {filteredProducts && filteredProducts.length !== 0 ? (
         <div className="grid grid-cols-2 gap-4 py-4 sm:grid-cols-3  md:grid-cols-3  lg:grid-cols-4  xl:grid-cols-5">
           {filteredProducts.map((product) => {
-            return <ProductCard key={product.id} product={product} />;
+            const isInCart = cartItems.find((item) => {
+              return item.id === product.id;
+            });
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                isInCart={isInCart}
+              />
+            );
           })}
         </div>
       ) : (

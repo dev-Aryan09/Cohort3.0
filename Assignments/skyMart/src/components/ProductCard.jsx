@@ -1,6 +1,28 @@
-import { Star, ShoppingCart } from "lucide-react";
+import { Star, ShoppingCart, CircleCheckBig } from "lucide-react";
+import { useContext } from "react";
+import { MyStore } from "../context/MyContext";
+import { Bounce, toast } from "react-toastify";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isInCart }) => {
+  const { cartItems, setCartItems, setCartOpen } = useContext(MyStore);
+
+  const handleAddToCart = () => {
+    let items = [...cartItems, { ...product, quantity: 1 }];
+    setCartItems(items);
+
+    localStorage.setItem("cartItems", JSON.stringify(items));
+
+    setCartOpen(true);
+
+    toast.success("Added to cart 🛒", {
+      position: "bottom-right",
+      autoClose: 1000,
+      pauseOnHover: false,
+      draggable: true,
+      theme: "dark",
+    });
+  };
+
   return (
     <div className="group w-full max-w-60 mx-auto overflow-hidden rounded-[30px] bg-[#0d0d0d] shadow-xl transition duration-300 hover:shadow-2xl hover:shadow-lime-400/30 border border-neutral-700 hover:border-lime-400">
       {/* Image Section */}
@@ -49,10 +71,26 @@ const ProductCard = ({ product }) => {
             $<span className="">{product.price}</span>
           </h3>
 
-          <button className="flex shrink-0 items-center gap-2 rounded-full bg-lime-400 px-3 py-1.5 text-xs font-semibold text-black transition hover:bg-lime-300 ">
-            <ShoppingCart size={13} />
-            <span>Add</span>
-          </button>
+          {isInCart && isInCart.quantity > 0 ? (
+            <button
+              title="already in cart"
+              onClick={handleAddToCart}
+              className="flex shrink-0 items-center gap-2 rounded-full border border-green-800 bg-green-500/20 px-3 py-1.5 text-xs text-green-400 font-semibold transition cursor-not-allowed "
+              disabled
+            >
+              <CircleCheckBig size={13} />
+              <span>Added</span>
+            </button>
+          ) : (
+            <button
+              title="add to cart"
+              onClick={handleAddToCart}
+              className="flex shrink-0 items-center gap-2 rounded-full bg-lime-400 px-3 py-1.5 text-xs font-semibold text-black transition hover:bg-lime-300 cursor-pointer"
+            >
+              <ShoppingCart size={13} />
+              <span>Add</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

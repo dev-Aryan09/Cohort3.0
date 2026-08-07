@@ -5,16 +5,14 @@ import Footer from "../components/Footer";
 import CartDrawer from "../components/cart/CartDrawer";
 
 const MainLayout = () => {
-  const [cartOpen, setCartOpen] = useState(false);
-
   return (
     <div>
-      <Navbar cartOpen={cartOpen} setCartOpen={setCartOpen} />
+      <Navbar />
       <div className="pt-16">
         <Outlet />
       </div>
       <Footer />
-      <CartDrawer cartOpen={cartOpen} setCartOpen={setCartOpen} />
+      <CartDrawer />
     </div>
   );
 };
