@@ -16,6 +16,7 @@ const CartItem = ({ item, onIncrease, onDecrease }) => {
       pauseOnHover: false,
       theme: "dark",
     });
+    localStorage.setItem("cartItems", JSON.stringify(nonDeletedItems));
     setCartItems(nonDeletedItems);
   };
 
