@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const MyStore = createContext();
 
@@ -28,6 +29,23 @@ export const ContextProvider = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleAddToCart = (product) => {
+    let items = [...cartItems, { ...product, quantity: 1 }];
+    setCartItems(items);
+
+    localStorage.setItem("cartItems", JSON.stringify(items));
+
+    setCartOpen(true);
+
+    toast.success("Added to cart 🛒", {
+      position: "bottom-right",
+      autoClose: 1000,
+      pauseOnHover: false,
+      draggable: true,
+      theme: "dark",
+    });
   };
 
   const totalCartPrice = cartItems.reduce((acc, item) => {
@@ -59,6 +77,7 @@ export const ContextProvider = ({ children }) => {
         setCartOpen,
         totalCartPrice,
         totalCartQuantity,
+        handleAddToCart,
       }}
     >
       {children}
