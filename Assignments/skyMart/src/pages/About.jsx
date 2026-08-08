@@ -193,7 +193,7 @@ const About = () => {
         </div>
 
         {/* CTA */}
-        <div className="rounded-3xl border border-lime-400/20 px-6 py-10 text-center">
+        <div className="rounded-3xl border border-lime-400/20 px-6 py-10 text-center transition duration-300 hover:shadow-xl hover:shadow-lime-400/30 hover:border-lime-400">
           <h2 className="text-2xl font-semibold">Ready to shop?</h2>
 
           <p className="mx-auto mt-4 max-w-xl text-neutral-400">
@@ -201,7 +201,7 @@ const About = () => {
           </p>
 
           <Link
-            to="/shop"
+            to="/main/shop"
             className="mt-8 inline-flex items-center gap-2 rounded-xl bg-lime-400 px-10 py-3 font-semibold text-black transition hover:scale-105 hover:bg-lime-300"
           >
             Browse Products

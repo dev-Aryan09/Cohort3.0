@@ -76,10 +76,12 @@ const Shop = () => {
   if (isLoading) return <ProductsLoader />;
 
   return (
-    <div className="px-4 sm:px-12 md:px-24 lg:px-26 xl:px-36 mb-18">
+    <div className="px-4 sm:px-12 md:px-16 lg:px-26 xl:px-36 mb-18">
       <div className="py-8 flex flex-col gap-2">
         <h1 className="text-white text-4xl font-semibold ">All Products</h1>
-        <p className="text-neutral-500">{productsData.length} products found</p>
+        <p className="text-neutral-500">
+          {filteredProducts.length} products found
+        </p>
       </div>
 
       {/* filters */}
@@ -104,7 +106,7 @@ const Shop = () => {
           </div>
 
           {/* category filter */}
-          <div className="relative w-full sm:w-64 py-4 px-2">
+          <div className="relative w-full lg:w-64 py-4 px-2">
             <select
               onChange={(e) => {
                 setCategory(e.target.value);
@@ -126,7 +128,7 @@ const Shop = () => {
           </div>
 
           {/* price filter */}
-          <div className="relative w-full sm:w-64 py-4 px-2">
+          <div className="relative w-full lg:w-64 py-4 px-2">
             <select
               onChange={(e) => {
                 setFeatured(e.target.value);
