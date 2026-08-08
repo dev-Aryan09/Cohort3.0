@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { Zap, Mail, Lock, Eye, ArrowRight, Star } from "lucide-react";
+import { Zap, Mail, Lock, Eye, EyeOff, ArrowRight, Star } from "lucide-react";
 import { MyStore } from "../context/MyContext";
 import { useForm } from "react-hook-form";
 import { Bounce, toast } from "react-toastify";
@@ -24,6 +24,7 @@ const Login = () => {
   const { loggedInUser, setLoggedInUser, registeredUsers } =
     useContext(MyStore);
 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -168,12 +169,26 @@ const Login = () => {
                       message: "Password id required",
                     },
                   })}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   className="h-12 w-full rounded-2xl border border-white/10 bg-[#1b1b1b] pl-14 pr-14 text-md text-white  placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
                 />
 
-                <Eye className="absolute right-5 top-1/2 h-5 w-5 -translate-y-1/2 cursor-pointer text-gray-500" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 transition hover:text-white cursor-pointer"
+                >
+                  {showPassword ? (
+                    <span title="Hide password">
+                      <EyeOff className="h-5 w-5" />
+                    </span>
+                  ) : (
+                    <span title="Show password">
+                      <Eye className="h-5 w-5" />
+                    </span>
+                  )}
+                </button>
                 {errors.password && (
                   <p className="text-red-500 text-xs mt-1">
                     {errors.password.message}

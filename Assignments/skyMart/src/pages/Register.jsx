@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { Zap, User, Mail, Lock, Eye, ArrowRight } from "lucide-react";
+import { Zap, User, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { MyStore } from "../context/MyContext";
 import { useForm } from "react-hook-form";
 import { toast, Bounce } from "react-toastify";
@@ -8,6 +8,8 @@ import { toast, Bounce } from "react-toastify";
 const Register = () => {
   const { registeredUsers, setRegisteredUsers } = useContext(MyStore);
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -134,15 +136,26 @@ const Register = () => {
                     message: "Minimum 6 characters is required",
                   },
                 })}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password (min 6 chars)"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-12 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
 
-              <Eye
-                size={18}
-                className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-neutral-500"
-              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 transition hover:text-white cursor-pointer"
+              >
+                {showPassword ? (
+                  <span title="Hide password">
+                    <EyeOff className="h-5 w-5" />
+                  </span>
+                ) : (
+                  <span title="Show password">
+                    <Eye className="h-5 w-5" />
+                  </span>
+                )}
+              </button>
               {errors.password && (
                 <p className="text-red-500 text-xs mt-1">
                   {errors.password.message}
@@ -165,7 +178,7 @@ const Register = () => {
                     message: "Minimum 6 characters is required",
                   },
                 })}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Confirm password"
                 className="h-12 w-full rounded-2xl border border-white/10 bg-[#1d1d1d] pl-12 pr-4 text-white placeholder:text-neutral-500 outline-none transition focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30 focus:ring-offset-0"
               />
