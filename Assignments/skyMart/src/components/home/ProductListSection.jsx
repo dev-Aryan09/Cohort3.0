@@ -1,8 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import ProductRowCard from "./ProductRowCard";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { MyStore } from "../../context/MyContext";
 
 const ProductListSection = ({ title, icon, products }) => {
+  const { cartItems } = useContext(MyStore);
   const navigate = useNavigate();
   return (
     <section className="rounded-[30px] bg-white p-6">
@@ -29,9 +32,18 @@ const ProductListSection = ({ title, icon, products }) => {
       {/* Products */}
 
       <div className="space-y-4">
-        {products.slice(0, 5).map((product) => (
-          <ProductRowCard key={product.id} product={product} />
-        ))}
+        {products.slice(0, 5).map((product) => {
+          const isInCart = cartItems.find((item) => {
+            return item.id === product.id;
+          });
+          return (
+            <ProductRowCard
+              key={product.id}
+              product={product}
+              isInCart={isInCart}
+            />
+          );
+        })}
       </div>
     </section>
   );
