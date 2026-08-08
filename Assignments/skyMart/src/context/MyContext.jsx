@@ -11,6 +11,7 @@ export const ContextProvider = ({ children }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const [productsData, setProductsData] = useState([]);
+
   const [registeredUsers, setRegisteredUsers] = useState(() => {
     return JSON.parse(localStorage.getItem("registeredUsers")) || [];
   });
@@ -49,16 +50,42 @@ export const ContextProvider = ({ children }) => {
   };
 
   const totalCartPrice = cartItems.reduce((acc, item) => {
-    return (acc = acc + item.price * 100);
+    return (acc = acc + item.price * 100 * item.quantity);
   }, 0);
 
   const totalCartQuantity = cartItems.reduce((total, item) => {
     return (total = total + item.quantity);
   }, 0);
 
+  const handleQuantityIncrement = (id) => {
+    setCartItems((prev) => {
+      return prev.map((item) => {
+        return item.id === id ? { ...item, quantity: item.quantity + 1 } : item;
+      });
+    });
+  };
+
+  const handleQuantityDecrement = (id) => {
+    setCartItems((prev) => {
+      return prev
+        .map((item) => {
+          return item.id === id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item;
+        })
+        .filter((item) => item.quantity > 0);
+    });
+  };
+
+  // Fetch products once on mount
   useEffect(() => {
     getProductsData();
   }, []);
+
+  //Sync cartItems to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <MyStore.Provider
@@ -78,6 +105,8 @@ export const ContextProvider = ({ children }) => {
         totalCartPrice,
         totalCartQuantity,
         handleAddToCart,
+        handleQuantityIncrement,
+        handleQuantityDecrement,
       }}
     >
       {children}

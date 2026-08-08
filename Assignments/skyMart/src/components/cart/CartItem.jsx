@@ -3,8 +3,13 @@ import { useContext } from "react";
 import { MyStore } from "../../context/MyContext";
 import { toast } from "react-toastify";
 
-const CartItem = ({ item, onIncrease, onDecrease }) => {
-  const { cartItems, setCartItems } = useContext(MyStore);
+const CartItem = ({ item }) => {
+  const {
+    cartItems,
+    setCartItems,
+    handleQuantityIncrement,
+    handleQuantityDecrement,
+  } = useContext(MyStore);
 
   const handleDeleteCartItem = (id) => {
     const nonDeletedItems = cartItems.filter((item) => {
@@ -52,7 +57,7 @@ const CartItem = ({ item, onIncrease, onDecrease }) => {
             {/* Quantity */}
             <div className="flex items-center gap-3">
               <button
-                onClick={() => onDecrease(item.id)}
+                onClick={() => handleQuantityDecrement(item.id)}
                 className="flex h-6 w-6 items-center justify-center rounded-lg border border-neutral-700 text-white transition hover:bg-neutral-800 cursor-pointer"
               >
                 <Minus size={13} />
@@ -63,7 +68,7 @@ const CartItem = ({ item, onIncrease, onDecrease }) => {
               </span>
 
               <button
-                onClick={() => onIncrease(item.id)}
+                onClick={() => handleQuantityIncrement(item.id)}
                 className="flex h-6 w-6 items-center justify-center rounded-lg border border-neutral-700 text-white transition hover:bg-neutral-800 cursor-pointer"
               >
                 <Plus size={13} />
