@@ -9,6 +9,7 @@ import AuthLayout from "../layout/AuthLayout";
 import MainLayout from "../layout/MainLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthProtectedRoute from "./AuthProtectedRoute";
+import ProductDetails from "../components/ProductDetails";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,8 @@ const AppRoutes = () => {
         <Route index={true} element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
+        {/* dynamic route */}
+        <Route path="products/:id" element={<ProductDetails />} />
       </Route>
 
       {/* this nested route will handle our layout without header and footer */}
