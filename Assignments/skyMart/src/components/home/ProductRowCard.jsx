@@ -1,12 +1,17 @@
 import { ShoppingBag } from "lucide-react";
 import { useContext } from "react";
 import { MyStore } from "../../context/MyContext";
+import { useNavigate } from "react-router";
 
 const ProductRowCard = ({ product, isInCart }) => {
+  const navigate = useNavigate();
   const { handleAddToCart } = useContext(MyStore);
   return (
     <div className="group flex items-center justify-between rounded-2xl border border-neutral-200 bg-white p-2 transition-all duration-300 hover:border-lime-400 hover:shadow-md">
-      <div className="flex items-center gap-4">
+      <div
+        onClick={() => navigate(`/main/products/${product.id}`)}
+        className="flex items-center gap-4 cursor-pointer w-full"
+      >
         <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-neutral-200">
           <img
             src={product.image}
@@ -16,7 +21,7 @@ const ProductRowCard = ({ product, isInCart }) => {
         </div>
 
         <div>
-          <h3 className="line-clamp-1 text-sm font-semibold text-neutral-800">
+          <h3 className="line-clamp-1 text-sm font-sem  ibold text-neutral-800">
             {product.title}
           </h3>
 

@@ -2,8 +2,10 @@ import { Star, ShoppingCart, CircleCheckBig } from "lucide-react";
 import { useContext } from "react";
 import { MyStore } from "../context/MyContext";
 import { Bounce, toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const ProductCard = ({ product, isInCart }) => {
+  const navigate = useNavigate();
   const { cartItems, setCartItems, setCartOpen, handleAddToCart } =
     useContext(MyStore);
 
@@ -16,6 +18,7 @@ const ProductCard = ({ product, isInCart }) => {
         </span>
 
         <img
+          onClick={() => navigate(`/main/products/${product.id}`)} // dynamic params
           src={product.image}
           alt={product.title}
           className="h-[60%] w-[60%] object-contain transition duration-300 group-hover:scale-110 group-hover:-translate-y-1"
