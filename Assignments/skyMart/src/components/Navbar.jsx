@@ -23,6 +23,7 @@ const Navbar = () => {
     toast.success("Logout Successful!", {
       position: "top-center",
       autoClose: 2000,
+      pauseOnHover: false,
       theme: "dark",
     });
 

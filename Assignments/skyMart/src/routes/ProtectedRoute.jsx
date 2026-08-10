@@ -6,15 +6,15 @@ import { Navigate } from "react-router";
 const ProtectedRoute = ({ children }) => {
   const { loggedInUser } = useContext(MyStore);
 
-  useEffect(() => {
-    if (!loggedInUser) {
-      toast.error("User not found, please login again", {
-        position: "top-right",
-        autoClose: 3000,
-        theme: "dark",
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!loggedInUser) {
+  //     toast.error("User not found, please login again", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       theme: "dark",
+  //     });
+  //   }
+  // }, []);
 
   if (!loggedInUser) {
     return <Navigate to="/" />;

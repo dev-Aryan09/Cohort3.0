@@ -44,6 +44,7 @@ const Login = () => {
       toast.error("Invalid credentials!", {
         position: "top-right",
         autoClose: 4000,
+        pauseOnHover: false,
         theme: "dark",
       });
       // reset();

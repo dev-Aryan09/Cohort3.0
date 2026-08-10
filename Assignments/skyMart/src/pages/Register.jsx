@@ -25,7 +25,7 @@ const Register = () => {
     });
 
     if (isUserAlreadyExist) {
-      toast.error("Invalid credentials!", {
+      toast.error("User Already Exists!", {
         position: "top-right",
         autoClose: 4000,
         theme: "dark",
