@@ -2,35 +2,17 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { AuthStore } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { setLoggedInUser, registeredUsers } = useContext(AuthStore);
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const navigate = useNavigate();
-
-  const formSubmit = (data) => {
-    // 'data' is coming from login page,
-    // using this 'data' finding the user inside our registered users
-    const user = registeredUsers.find((val) => {
-      return val.email === data.email && val.password === data.password;
-    });
-
-    if (!user) {
-      alert("Invalid access, Please enter valid credentials");
-      reset();
-      return;
-    }
-
-    setLoggedInUser(user);
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-    reset();
-    navigate("/main");
-  };
+    loginFormSubmit,
+    errors,
+    setLoggedInUser,
+    registeredUsers,
+  } = useAuth();
 
   return (
     <main className="h-screen w-full flex items-center justify-center bg-linear-to-r from-white to-black">
@@ -41,7 +23,7 @@ const Login = () => {
 
         {/* Form */}
         <form
-          onSubmit={handleSubmit(formSubmit)}
+          onSubmit={handleSubmit(loginFormSubmit)}
           className="flex flex-col gap-4"
         >
           <input

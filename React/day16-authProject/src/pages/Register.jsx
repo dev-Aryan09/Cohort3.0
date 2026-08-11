@@ -2,25 +2,19 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { AuthStore } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
-  const { registeredUsers, setRegisteredUsers } = useContext(AuthStore);
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  const formSubmit = (data) => {
-    let arr = [...registeredUsers, data];
-    setRegisteredUsers(arr);
-    alert("user registered successfully");
-    localStorage.setItem("registeredUsers", JSON.stringify(arr));
-
-    reset();
-  };
+    registerFormSubmit,
+    errors,
+    navigate,
+    setLoggedInUser,
+    registeredUsers,
+    setRegisteredUsers,
+  } = useAuth();
 
   return (
     <main className="h-screen w-full flex items-center justify-center bg-linear-to-r from-white to-black">
@@ -31,7 +25,7 @@ const Register = () => {
 
         {/* Form */}
         <form
-          onSubmit={handleSubmit(formSubmit)}
+          onSubmit={handleSubmit(registerFormSubmit)}
           className="flex flex-col gap-4"
         >
           <input
