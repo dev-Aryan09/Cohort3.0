@@ -1,11 +1,11 @@
 import React from "react";
 import Home from "./Home";
 
-const About = ({ users }) => {
+const About = () => {
   console.log("About rendering...", performance.now());
   return (
     <div>
-      <h1>About rendering...</h1>
+      <h1>About this side</h1>
     </div>
   );
 };

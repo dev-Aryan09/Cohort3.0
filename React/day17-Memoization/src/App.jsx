@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Home from "./components/Home";
 import About from "./components/About";
 import { useState } from "react";
@@ -8,6 +8,11 @@ const App = () => {
 
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState({ name: "Aryan", id: 123 });
+
+  const greet = useCallback(() => {
+    console.log("Hello sheryians coding school...");
+  }, [users]);
+
   return (
     <div>
       <h1>Memoization</h1>
@@ -22,7 +27,7 @@ const App = () => {
         update user
       </button>
       <Home />
-      <About users={users} />
+      <About greet={greet} />
     </div>
   );
 };
