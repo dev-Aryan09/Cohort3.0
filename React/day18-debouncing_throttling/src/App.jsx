@@ -6,6 +6,9 @@ const App = () => {
   const [productsData, setProductsData] = useState([]);
   const [searchData, setSearchData] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [scrollY, setScrollY] = useState(null);
+
+  let throttling = false;
 
   const getProducts = async () => {
     try {
@@ -40,6 +43,23 @@ const App = () => {
 
     return () => clearTimeout(timeout); //executes when new comes
   }, [searchData]);
+
+  //throttling..
+  useEffect(() => {
+    const handleScroll = () => {
+      if (throttling) return;
+      console.log("scroll triggered...");
+      throttling = true;
+      setTimeout(() => {
+        setScrollY(window.scrollY);
+        throttling = false;
+      }, 3000);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     getProducts();
