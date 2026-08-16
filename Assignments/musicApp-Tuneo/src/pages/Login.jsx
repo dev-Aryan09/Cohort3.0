@@ -166,7 +166,7 @@ const Login = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-slate-300"
+                  className="mb-1 block text-sm font-medium text-slate-300"
                 >
                   Email address
                 </label>
@@ -194,7 +194,7 @@ const Login = () => {
 
               {/* Password */}
               <div>
-                <div className="mb-2 flex items-center justify-between">
+                <div className="mb-1 flex items-center justify-between">
                   <label
                     htmlFor="password"
                     className="text-sm font-medium text-slate-300"
@@ -214,17 +214,15 @@ const Login = () => {
                   <input
                     {...register("password", {
                       required: "Password is required",
-                      pattern: {
-                        value:
-                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                        message:
-                          "Password must contain 8+ characters, uppercase, lowercase, number and special character",
+                      minLength: {
+                        value: 8,
+                        message: "Minimum 8 characters are required",
                       },
                     })}
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    autoComplete="current-password"
+                    autoComplete="new-password"
                     className="h-12 w-full rounded-xl border border-white/8 bg-[#161B26]/70 px-4 pr-12 text-sm text-[#F8FAFC] outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/20"
                   />
 
