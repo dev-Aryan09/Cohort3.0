@@ -11,6 +11,7 @@ import {
   ArrowRight,
   AudioWaveform,
   EyeOff,
+  Headphones,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -106,244 +107,314 @@ const Register = () => {
 
       {/* ================= REGISTER CARD ================= */}
 
-      <section className="relative z-10 w-full max-w-117.5 rounded-2xl border border-white/8 bg-[#161B26]/65 p-6 shadow-2xl shadow-black/30 backdrop-blur-2xl sm:px-8 sm:py-3">
-        {/* Logo */}
-        <div className="mb-5 flex justify-center">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 shadow-lg shadow-violet-900/30">
-              <AudioWaveform size={22} />
+      <section className="relative z-10 w-full max-w-5xl overflow-hidden rounded-2xl border border-white/8 bg-[#161B26]/65 shadow-2xl shadow-black/30 backdrop-blur-2xl md:grid md:grid-cols-[0.8fr_1.2fr]">
+        {/* ================= LEFT SECTION ================= */}
+        <div className="flex flex-col justify-center border-b border-white/8 bg-[#111621]/60 p-7 md:border-r md:border-b-0 md:p-10">
+          {/* Logo */}
+          <div className="mb-8 flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-600 shadow-lg shadow-violet-900/30">
+              <AudioWaveform size={23} />
             </div>
 
             <span className="text-2xl font-semibold tracking-[-0.04em]">
               tune<span className="text-violet-400">O</span>
             </span>
           </div>
-        </div>
 
-        {/* Heading */}
-        <div className="mb-5 text-center">
-          <p className="mb-2 text-sm font-medium text-violet-400">
-            Join the sound
-          </p>
-
-          <h1 className="text-3xl font-semibold tracking-[-0.03em]">
-            Create your account
-          </h1>
-
-          <p className=" text-xs leading-6 text-[#94A3B8]">
-            Start building your personal music experience.
-          </p>
-        </div>
-
-        {/* ================= FORM ================= */}
-
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-4">
-          {/* NAME */}
+          {/* Heading */}
           <div>
-            <label
-              htmlFor="name"
-              className="mb-1 block text-sm font-medium text-slate-300"
-            >
-              Full name
-            </label>
+            <p className="mb-2 text-sm font-medium text-violet-400">
+              Join the sound
+            </p>
 
-            <input
-              {...register("name", {
-                required: {
-                  value: true,
-                  message: "Name is required",
-                },
-                minLength: {
-                  value: 3,
-                  message: "Minimum 3 characters are required",
-                },
-              })}
-              id="name"
-              type="text"
-              placeholder="Enter your name"
-              autoComplete="name"
-              className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
-            />
+            <h1 className="mb-3 text-3xl font-semibold tracking-[-0.03em]">
+              Create your account
+            </h1>
 
-            {errors.name && (
-              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
-            )}
+            <p className="max-w-sm text-sm leading-6 text-[#94A3B8]">
+              Start building your personal music experience and connect with the
+              music you love.
+            </p>
           </div>
 
-          {/* EMAIL */}
-          <div>
-            <label
-              htmlFor="email"
-              className="mb-1 block text-sm font-medium text-slate-300"
-            >
-              Email address
-            </label>
+          {/* ROLE SELECTION */}
+          <div className="mt-8">
+            <p className="mb-3 text-sm font-medium text-slate-300">
+              I want to join as
+            </p>
 
-            <input
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email address",
-                },
-              })}
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              autoComplete="email"
-              className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
+            <div className="grid grid-cols-2 gap-3">
+              {/* LISTENER */}
+              <label className="cursor-pointer">
+                <input
+                  {...register("role", {
+                    required: "Please select your role",
+                  })}
+                  type="radio"
+                  value="listener"
+                  className="peer sr-only"
+                />
 
-          {/* PASSWORD */}
-          <div>
-            <label
-              htmlFor="password"
-              className="mb-1 block text-sm font-medium text-slate-300"
-            >
-              Password
-            </label>
+                <div className="rounded-xl border border-white/8 bg-[#0B0E14]/40 p-3 transition hover:border-violet-500/40 peer-checked:border-violet-500 peer-checked:bg-violet-500/10">
+                  <Headphones size={22} className="mb-3 text-violet-400" />
 
-            <div className="relative">
-              <input
-                {...register("password", {
-                  required: "Password is required",
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message:
-                      "Password must contain 8+ characters, uppercase, lowercase, number and special character",
-                  },
-                })}
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Create password"
-                autoComplete="new-password"
-                className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 pr-12 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
-              />
+                  <p className="text-sm font-semibold text-white">Listener</p>
 
-              <button
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                aria-label="Show password"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] transition hover:text-white"
-              >
-                {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
-              </button>
+                  <p className="mt-1 text-xs leading-5 text-[#94A3B8]">
+                    Discover, save and enjoy your favorite music.
+                  </p>
+                </div>
+              </label>
+
+              {/* ARTIST */}
+              <label className="cursor-pointer">
+                <input
+                  {...register("role", {
+                    required: "Please select your role",
+                  })}
+                  type="radio"
+                  value="artist"
+                  className="peer sr-only"
+                />
+
+                <div className="rounded-xl border border-white/8 bg-[#0B0E14]/40 p-3 transition hover:border-violet-500/40 peer-checked:border-violet-500 peer-checked:bg-violet-500/10">
+                  <Mic2 size={22} className="mb-3 text-violet-400" />
+
+                  <p className="text-sm font-semibold text-white">Artist</p>
+
+                  <p className="mt-1 text-xs leading-5 text-[#94A3B8]">
+                    Upload music and share your sound with listeners.
+                  </p>
+                </div>
+              </label>
             </div>
 
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.password.message}
-              </p>
+            {errors.role && (
+              <p className="mt-2 text-xs text-red-500">{errors.role.message}</p>
             )}
           </div>
+        </div>
 
-          {/* CONFIRM PASSWORD */}
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="mb-1 block text-sm font-medium text-slate-300"
-            >
-              Confirm password
-            </label>
+        {/* ================= RIGHT SECTION ================= */}
+        <div className="p-6 sm:p-8">
+          <form onSubmit={handleSubmit(formSubmit)} className="space-y-4">
+            {/* NAME */}
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-1 block text-sm font-medium text-slate-300"
+              >
+                Full name
+              </label>
 
-            <div className="relative">
               <input
-                {...register("confirmPassword", {
-                  required: "Confirm your password",
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message: "Must match with your password",
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is required",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Minimum 3 characters are required",
                   },
                 })}
-                id="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm password"
-                autoComplete="new-password"
-                className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 pr-12 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                autoComplete="name"
+                className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
               />
 
-              <button
-                onClick={() => setShowConfrimPassword((prev) => !prev)}
-                type="button"
-                aria-label="Show confirm password"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] transition hover:text-white"
-              >
-                {showConfirmPassword ? <EyeOff size={19} /> : <Eye size={19} />}
-              </button>
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.confirmPassword.message}
-              </p>
-            )}
-          </div>
-
-          {/* Terms */}
-          <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-5 text-[#94A3B8]">
-            <input
-              {...register("termsAndPrivacyPolicy", {
-                required: "Must read and allow this",
-              })}
-              type="checkbox"
-              className="mt-0.5 h-4 w-4 shrink-0 accent-violet-600"
-            />
-
-            <span>
-              I agree to the{" "}
-              <button
-                type="button"
-                className="font-medium text-violet-400 transition hover:text-violet-300"
+            {/* EMAIL */}
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-1 block text-sm font-medium text-slate-300"
               >
-                Terms
-              </button>{" "}
-              and{" "}
-              <button
-                type="button"
-                className="font-medium text-violet-400 transition hover:text-violet-300"
+                Email address
+              </label>
+
+              <input
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Enter a valid email address",
+                  },
+                })}
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                autoComplete="email"
+                className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
+              />
+
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+
+            {/* PASSWORD */}
+            <div>
+              <label
+                htmlFor="password"
+                className="mb-1 block text-sm font-medium text-slate-300"
               >
-                Privacy Policy
-              </button>
-            </span>
-            {errors.termsAndPrivacyPolicy && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.termsAndPrivacyPolicy.message}
-              </p>
-            )}
-          </label>
+                Password
+              </label>
 
-          {/* SUBMIT */}
-          <button
-            type="submit"
-            className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-violet-600 text-sm font-semibold text-white shadow-lg shadow-violet-950/30 transition duration-300 hover:bg-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-500/20 active:scale-[0.98] cursor-pointer"
-          >
-            Create Account
-            <ArrowRight
-              size={18}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </button>
-        </form>
+              <div className="relative">
+                <input
+                  {...register("password", {
+                    required: "Password is required",
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                      message:
+                        "Password must contain 8+ characters, uppercase, lowercase, number and special character",
+                    },
+                  })}
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Create password"
+                  autoComplete="new-password"
+                  className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 pr-12 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
+                />
 
-        {/* LOGIN LINK */}
-        <p className="mt-4 text-center text-sm text-[#94A3B8]">
-          Already have an account?{" "}
-          <button
-          onClick={()=> navigate("/")}
-            type="button"
-            className="font-semibold text-violet-400 transition hover:text-violet-300 cursor-pointer"
-          >
-            Sign in
-          </button>
-        </p>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  aria-label="Show password"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] transition hover:text-white"
+                >
+                  {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+                </button>
+              </div>
+
+              {errors.password && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            {/* CONFIRM PASSWORD */}
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="mb-1 block text-sm font-medium text-slate-300"
+              >
+                Confirm password
+              </label>
+
+              <div className="relative">
+                <input
+                  {...register("confirmPassword", {
+                    required: "Confirm your password",
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                      message: "Must match with your password",
+                    },
+                  })}
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm password"
+                  autoComplete="new-password"
+                  className="h-12 w-full rounded-xl border border-white/8 bg-[#0B0E14]/50 px-4 pr-12 text-sm text-white outline-none transition placeholder:text-slate-600 hover:border-white/[0.14] focus:border-violet-500/70 focus:ring-4 focus:ring-violet-500/10"
+                />
+
+                <button
+                  onClick={() => setShowConfrimPassword((prev) => !prev)}
+                  type="button"
+                  aria-label="Show confirm password"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#94A3B8] transition hover:text-white"
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff size={19} />
+                  ) : (
+                    <Eye size={19} />
+                  )}
+                </button>
+              </div>
+
+              {errors.confirmPassword && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
+
+            {/* Terms */}
+            <div>
+              <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-5 text-[#94A3B8]">
+                <input
+                  {...register("termsAndPrivacyPolicy", {
+                    required: "Must read and allow this",
+                  })}
+                  type="checkbox"
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-violet-600"
+                />
+
+                <span>
+                  I agree to the{" "}
+                  <button
+                    type="button"
+                    className="font-medium text-violet-400 transition hover:text-violet-300"
+                  >
+                    Terms
+                  </button>{" "}
+                  and{" "}
+                  <button
+                    type="button"
+                    className="font-medium text-violet-400 transition hover:text-violet-300"
+                  >
+                    Privacy Policy
+                  </button>
+                </span>
+              </label>
+
+              {errors.termsAndPrivacyPolicy && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.termsAndPrivacyPolicy.message}
+                </p>
+              )}
+            </div>
+
+            {/* SUBMIT */}
+            <button
+              type="submit"
+              className="group flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-violet-600 text-sm font-semibold text-white shadow-lg shadow-violet-950/30 transition duration-300 hover:bg-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-500/20 active:scale-[0.98]"
+            >
+              Create Account
+              <ArrowRight
+                size={18}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
+          </form>
+
+          {/* LOGIN LINK */}
+          <p className="mt-4 text-center text-sm text-[#94A3B8]">
+            Already have an account?{" "}
+            <button
+              onClick={() => navigate("/")}
+              type="button"
+              className="cursor-pointer font-semibold text-violet-400 transition hover:text-violet-300"
+            >
+              Sign in
+            </button>
+          </p>
+        </div>
       </section>
 
       {/* ================= FLOATING ANIMATION ================= */}
