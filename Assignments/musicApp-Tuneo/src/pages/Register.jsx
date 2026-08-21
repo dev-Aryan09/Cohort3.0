@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Mic2,
   Radio,
@@ -15,8 +15,12 @@ import {
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import { toast, Bounce } from "react-toastify";
 
 const Register = () => {
+  const { registeredUsers, setRegisteredUsers } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -30,8 +34,32 @@ const Register = () => {
   const [showConfirmPassword, setShowConfrimPassword] = useState(false);
 
   const formSubmit = (data) => {
-    console.log(data);
-    // Your register logic
+    const isAlreadyExist = registeredUsers.some((user) => {
+      return user.email === data.email;
+    });
+    if (isAlreadyExist) {
+      toast.error("User Already Exists!", {
+        position: "top-right",
+        autoClose: 4000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    }
+
+    const newUser = [...registeredUsers, data];
+    localStorage.setItem("registeredUsers", JSON.stringify(newUser));
+    setRegisteredUsers(newUser);
+
+    toast.success("Account Created Successfully!", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "dark",
+      transition: Bounce,
+    });
+
+    reset();
+    navigate("/"); // navigate to login
   };
 
   return (

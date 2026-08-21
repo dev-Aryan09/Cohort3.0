@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Eye,
   EyeOff,
@@ -12,8 +12,13 @@ import {
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import { toast, Bounce } from "react-toastify";
 
 const Login = () => {
+  const { loggedInUser, setLoggedInUser, registeredUsers } =
+    useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -23,11 +28,34 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const [loggedInUser, setLoggedInUser] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const formSubmit = (data) => {
-    setLoggedInUser(data);
+    const isUserExist = registeredUsers.find((user) => {
+      return user.email === data.email && user.password === data.password;
+    });
+    if (!isUserExist) {
+      toast.error("Invalid credentials or user dosen't exist", {
+        position: "top-right",
+        autoClose: 4000,
+        pauseOnHover: false,
+        theme: "dark",
+      });
+      return;
+    }
+
+    setLoggedInUser(isUserExist);
+    localStorage.setItem("loggedInUser", JSON.stringify(isUserExist));
+
+    toast.success("Logged in Successfully", {
+      position: "top-right",
+      autoClose: 2000,
+      pauseOnHover: false,
+      theme: "dark",
+    });
+
+    reset();
+    navigate("/main"); // navigate to main layout according to USER ROLE
   };
 
   return (
