@@ -16,23 +16,24 @@ import { NavLink } from "react-router";
 
 const navItems = [
   {
+    path: "/main",
     label: "Home",
-    path: "/",
     icon: Home,
+    end: true,
   },
   {
+    path: "/main/discover",
     label: "Discover",
-    path: "/discover",
     icon: Compass,
   },
   {
+    path: "/main/library",
     label: "Library",
-    path: "/library",
     icon: Library,
   },
   {
+    path: "/main/liked",
     label: "Liked Songs",
-    path: "/liked",
     icon: Heart,
   },
 ];
@@ -98,7 +99,7 @@ const Navbar = () => {
 
             {/* LINKS */}
             <nav className="space-y-1" aria-label="Mobile navigation">
-              {navItems.map(({ label, path, icon: Icon }) => (
+              {navItems.map(({ label, path, icon: Icon, end }) => (
                 <NavLink
                   key={label}
                   to={path}
@@ -110,6 +111,7 @@ const Navbar = () => {
                         : "text-[#94A3B8] hover:bg-white/5 hover:text-white"
                     }`
                   }
+                  end={end}
                 >
                   <Icon size={18} />
 
