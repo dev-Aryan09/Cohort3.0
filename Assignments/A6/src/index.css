@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 9999px;
+  border: 1px solid black;
+  background: white;
+  color: black !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+.swiper-navigation-icon {
+  width: 15px !important;
+}
+
+.swiper-pagination-bullet {
+  /* position: absolute !important; */
+  background: #2f2c63 !important;
+  width: 40px !important;
+  height: 1.5px !important;
+  /* top: 1rem !important; */
+  margin-top: 50rem !important;
+  border-radius: 2% !important;
+}
