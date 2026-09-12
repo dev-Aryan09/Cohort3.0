@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicon-16x16.png"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Background Overlay -->
+    <div class="overlay"></div>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+      <div class="logo">
+        <div class="logo-icon">A</div>
+
+        <div>
+          <h2>Aryan</h2>
+
+          <span>PERSONAL PRODUCTIVITY SPACE</span>
+        </div>
+      </div>
+
+      <div class="header-btns">
+        <button title="Student at Sheryians Coding School" class="icon-btn">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <button title="Change theme" id="themeBtn" class="theme-btn">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= QUOTE ================= -->
+
+    <section class="quote glass">
+      <p>"A person grows up when they are able to overcome hardships."</p>
+      <h4>— Master Jiraya</h4>
+    </section>
+
+    <!-- ================= GREETING ================= -->
+
+    <section class="greeting glass">
+      <h1 id="greeting">Good Afternoon, Howdy</h1>
+      <p id="subtitle">🌸Smile, breathe, conquer today</p>
+    </section>
+
+    <!-- ================= CLOCK ================= -->
+
+    <section class="clock-card glass">
+      <h1 id="clock">00:00:00</h1>
+      <span id="ampm">PM</span>
+
+      <div class="date-weather">
+        <span id="date">
+          <!-- Thursday, 23 July 2026 -->
+        </span>
+        •
+        <span id="weather"> 32°C · Clear Sky </span>
+      </div>
+
+      <div class="format">
+        <label>
+          <input type="checkbox" id="formatToggle" />
+          24h
+        </label>
+      </div>
+    </section>
+
+    <!-- ================= SHORTCUTS ================= -->
+
+    <section class="shortcut-container">
+      <div class="shortcut glass" id="taskBtn">
+        <span class="badge" id="total-tasks-count">0</span>
+
+        <i class="fa-solid fa-list-check"></i>
+        <h3>TASKS</h3>
+      </div>
+
+      <div class="shortcut glass notification" id="plannerBtn">
+        <span class="badge p-badge" id="total-plans-count">0</span>
+        <i class="fa-regular fa-calendar"></i>
+        <h3>PLANNER</h3>
+      </div>
+
+      <div class="shortcut glass" id="goalBtn">
+        <span class="badge g-badge" id="total-goals-count">0</span>
+
+        <i class="fa-solid fa-bullseye"></i>
+        <h3>GOALS</h3>
+      </div>
+
+      <div class="shortcut glass" id="pomodoroBtn">
+        <i class="fa-regular fa-clock"></i>
+        <h3>POMODORO</h3>
+      </div>
+    </section>
+
+    <!-- -------- Todo Card --------- -->
+
+    <section class="todo-container">
+      <div class="cart todo-cart">
+        <!-- Close Button -->
+        <button type="button" class="close-btn" id="todoCloseBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Heading -->
+        <h1>TASKS</h1>
+
+        <!-- Input -->
+        <div class="input-box">
+          <input type="text" placeholder="Add a task..." id="taskInput" />
+          <button id="addTask">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filters">
+          <button class="active">ALL</button>
+          <button>ACTIVE</button>
+          <button>DONE</button>
+        </div>
+
+        <!-- Task List -->
+        <div class="task-list">
+          <div class="task">
+            <label>
+              <input type="checkbox" />
+              <span class="circle"></span>
+              <p>exp5</p>
+            </label>
+          </div>
+          <div class="task">
+            <label>
+              <input type="checkbox" />
+              <span class="circle"></span>
+              <p>exp4</p>
+            </label>
+          </div>
+
+          <div class="task">
+            <label>
+              <input type="checkbox" />
+              <span class="circle"></span>
+              <p>exp3</p>
+            </label>
+          </div>
+
+          <div class="task">
+            <label>
+              <input type="checkbox" />
+              <span class="circle"></span>
+              <p>exp2</p>
+            </label>
+          </div>
+
+          <div class="task">
+            <label>
+              <input type="checkbox" />
+              <span class="circle"></span>
+              <p>exp</p>
+            </label>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <span> <strong>13</strong> Pending · <strong>13</strong> Total </span>
+
+          <button class="clear-btn">Clear Done</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+                    PLANNER POPUP
+    =========================================== -->
+
+    <section class="planner-container">
+      <div class="planner-card">
+        <!-- Close Button -->
+
+        <button type="button" id="plannerCloseBtn" class="close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Heading -->
+
+        <h1>PLANNER</h1>
+
+        <!-- Input Row -->
+
+        <div class="planner-input">
+          <!-- Time -->
+
+          <div class="time-box">
+            <input type="time" id="plannerTime" />
+          </div>
+
+          <!-- Event -->
+
+          <input type="text" id="plannerText" placeholder="Event or task..." />
+
+          <!-- Add -->
+
+          <button id="plannerAddBtn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <!-- Planner List -->
+
+        <div class="planner-list" id="plannerList">
+          <!-- Example Item -->
+
+          <!--
+    
+                <div class="planner-item">
+    
+                    <span class="planner-time">
+                        07:30 AM
+                    </span>
+    
+                    <p>
+                        Complete JavaScript Project
+                    </p>
+    
+                    <button>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+    
+                </div>
+    
+                -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+                GOALS POPUP
+========================================== -->
+
+    <section class="goals-container">
+      <div class="goals-card">
+        <!-- Close Button -->
+        <button type="button" id="goalCloseBtn" class="close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- Heading -->
+        <h1>GOALS</h1>
+        <!-- Current Goal -->
+        <div class="current-goal">
+          <small>YOUR GOAL IS</small>
+          <h2 id="mainGoal">Nothing Yet</h2>
+        </div>
+        <!-- Add Goal -->
+        <div class="goal-input">
+          <input
+            type="text"
+            id="goalInput"
+            placeholder="Add a goal for today..."
+          />
+          <button id="goalAddBtn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+        <!-- Goal List -->
+        <div class="goal-list" id="goalList"></div>
+        <!-- Footer -->
+        <div class="goal-footer">
+          <span>
+            <strong id="goalPending"> 0</strong> pending ·
+            <strong id="goalTotal"> 0</strong> total</span
+          >
+          <button id="goalClearBtn">Clear Done</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+                POMODORO POPUP
+========================================== -->
+
+    <section class="pomodoro-container">
+      <div class="pomodoro-card">
+        <!-- Close Button -->
+        <button type="button" id="pomodoroCloseBtn" class="close-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- Heading -->
+        <h1>POMODORO</h1>
+        <!-- Timer Modes -->
+        <div class="pomo-tabs">
+          <button class="pomo-tab active" data-mode="work">WORK</button>
+          <button class="pomo-tab" data-mode="short">SHORT BREAK</button>
+          <button class="pomo-tab" data-mode="long">LONG BREAK</button>
+        </div>
+
+        <!-- Circle -->
+        <div class="timer-wrapper">
+          <svg class="progress-ring" width="250" height="250">
+            <circle class="ring-bg" cx="125" cy="125" r="90"></circle>
+            <circle class="ring-progress" cx="125" cy="125" r="90"></circle>
+          </svg>
+
+          <div class="timer-text">
+            <h2 id="timer">5:00</h2>
+          </div>
+        </div>
+
+        <!-- Controls -->
+
+        <div class="timer-controls">
+          <button id="resetTimer">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button id="startPauseTimer">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button id="nextSession">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+
+        <!-- Footer -->
+
+        <div class="timer-footer">
+          <span id="sessionText"> Session 1 · Wor </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>

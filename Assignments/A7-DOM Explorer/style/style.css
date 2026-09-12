@@ -1,0 +1,1544 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap");
+
+:root {
+  --x: 50%;
+  --y: 50%;
+}
+
+/* ===========================
+   RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  position: fixed;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  /* background: url("https://one-page-rendering-debanjan.vercel.app/backgrounds/noon.avif") center center/cover no-repeat fixed; */
+  background: url("../images//darkMode.jpg") center center/cover no-repeat fixed;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+  transition: 0.4s;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  transition: background 0.1s linear;
+}
+
+/* ===========================
+   LIGHT THEME
+=========================== */
+
+body.light {
+  /* background: url("https://one-page-rendering-debanjan.vercel.app/backgrounds/noon.avif") center center/cover no-repeat fixed; */
+  background: url("../images/lighMode.jpg") center center/cover no-repeat fixed;
+  color: #4a554a;
+  background-color: #f4f7f6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(
+    450px circle at var(--x) var(--y),
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.08) 35%,
+    transparent 70%
+  );
+
+  mix-blend-mode: screen;
+  transition: background 0.08s linear;
+}
+
+/* ===========================
+   OVERLAY
+=========================== */
+
+.overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  /* backdrop-filter: blur(2px); */
+
+  z-index: -1;
+}
+
+body.light .overlay {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===========================
+   GLASS EFFECT
+=========================== */
+
+.glass {
+  /* background: rgba(255, 255, 255, .08); */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: 0.35s;
+  /* background: red !important; */
+}
+
+.glass:hover {
+  transform: translateY(-4px);
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 8px 60px;
+
+  border-bottom: 1px solid rgba(255, 255, 255);
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.logo-icon {
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 24px;
+
+  font-weight: 700;
+}
+
+.logo h2 {
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+.logo span {
+  font-size: 12px;
+
+  opacity: 0.75;
+
+  letter-spacing: 2px;
+}
+
+/* ===========================
+   HEADER BUTTONS
+=========================== */
+
+.header-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn,
+.theme-btn {
+  height: 46px;
+  padding: 0 22px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* backdrop-filter: blur(10px); */
+  font-size: 16px;
+  transition: 0.35s;
+}
+
+.icon-btn {
+  padding: 10;
+}
+
+.theme-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.icon-btn:hover,
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ===========================
+   QUOTE
+=========================== */
+
+.quote {
+  width: 550px;
+  margin: 20px 60px;
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+.quote p {
+  font-size: 13px;
+  line-height: 1.8;
+  font-style: italic;
+  font-family: "Roboto Mono", monospace;
+}
+
+.quote h4 {
+  margin-top: 5px;
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* ===========================
+   GREETING
+=========================== */
+
+.greeting {
+  width: fit-content;
+  margin: 15px auto;
+  text-align: center;
+  padding: 15px 20px;
+}
+
+.greeting h1 {
+  font-size: 30px;
+  font-weight: normal;
+  font-family: sans-serif;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+.greeting p {
+  margin-top: 8px;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+/* ===========================
+   CLOCK CARD
+=========================== */
+
+.clock-card {
+  width: fit-content;
+  margin: 30px auto;
+  padding: 10px 40px;
+  text-align: center;
+  position: relative;
+}
+
+#clock {
+  font-size: 100px;
+  font-family: "Roboto Mono", monospace;
+
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+#ampm {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.date-weather {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 22px;
+  opacity: 0.85;
+}
+
+.format {
+  margin-top: 15px;
+}
+
+.format label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.format input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* ===========================
+   SHORTCUTS
+=========================== */
+
+.shortcut-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.shortcut {
+  /* width: 120px;
+    height: 120px; */
+
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: 0.35s;
+}
+
+.shortcut:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.shortcut i {
+  font-size: 25px;
+  margin-bottom: 14px;
+}
+
+.shortcut h3 {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* ===========================
+   NOTIFICATION BADGE
+=========================== */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ff4b4b;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.p-badge {
+  background-color: purple;
+}
+
+.g-badge {
+  background-color: blue;
+}
+
+/* ===========================
+   BUTTON ANIMATION
+=========================== */
+
+.icon-btn,
+.theme-btn,
+.shortcut {
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    border 0.3s,
+    box-shadow 0.3s;
+}
+
+.icon-btn:hover,
+.theme-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+/* ===========================
+   LIGHT MODE COLORS
+=========================== */
+
+body.light .glass {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #4a554a;
+}
+
+body.light .icon-btn,
+body.light .theme-btn {
+  background: rgba(255, 255, 255, 0.5);
+  color: #4a554a;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.light .logo-icon {
+  background: rgba(255, 255, 255, 0.6);
+  color: #4a554a;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1200px) {
+  .greeting {
+    width: 90%;
+  }
+
+  .clock-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 20px;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .quote {
+    width: 90%;
+
+    margin: 30px auto;
+  }
+
+  .greeting {
+    padding: 30px 20px;
+  }
+
+  .greeting h1 {
+    font-size: 38px;
+  }
+
+  .greeting p {
+    font-size: 20px;
+  }
+
+  #clock {
+    font-size: 68px;
+  }
+
+  #ampm {
+    position: static;
+
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 22px;
+  }
+
+  .date-weather {
+    font-size: 16px;
+  }
+
+  .shortcut {
+    width: 100px;
+
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  #clock {
+    font-size: 52px;
+  }
+
+  .greeting h1 {
+    font-size: 30px;
+  }
+
+  .quote p {
+    font-size: 18px;
+  }
+
+  .shortcut-container {
+    gap: 15px;
+  }
+
+  .shortcut {
+    width: 90px;
+
+    height: 90px;
+  }
+}
+
+/* ===========================
+       TODO CARD
+    =========================== */
+
+.todo-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(18, 20, 28, 0.7);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+body.light .todo-container {
+  background: rgba(227, 227, 229, 0.581);
+}
+
+.todo-container .cart {
+  width: 540px;
+  max-width: 95%;
+  height: 560px;
+  position: fixed;
+  z-index: 10;
+  padding: 28px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: 0.35s;
+}
+
+body.light .todo-container .cart {
+  /* background: rgba(235, 237, 246, 0.89); */
+  background: rgba(255, 255, 255, 0.071);
+  color: black;
+  /* background: rgba(255, 255, 255, .08); */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: 0.35s;
+}
+
+/* ===========================
+       CLOSE BUTTON
+    =========================== */
+
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.light .close-btn {
+  color: black;
+  border: 1px solid rgba(81, 78, 78, 0.591);
+}
+
+.close-btn:hover {
+  box-shadow: 0 0 10px #ccc;
+}
+
+/* ===========================
+       HEADING
+    =========================== */
+
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+
+/* ===========================
+       INPUT
+    =========================== */
+
+.input-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.input-box input {
+  flex: 1;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 18px;
+  font-size: 16px;
+  outline: none;
+  color: white;
+}
+
+body.light .input-box input {
+  border: 1px solid rgba(77, 74, 74, 0.61);
+  background: rgba(215, 208, 208, 0.641);
+  color: rgb(27, 27, 27);
+}
+
+.input-box input::placeholder {
+  color: #9b9b9b;
+}
+
+body.light .input-box input::placeholder {
+  color: #555454;
+}
+
+.input-box button {
+  width: 55px;
+  border: none;
+  border-radius: 5px;
+  background: #5d5fef;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
+body.light .input-box button {
+  color: black;
+}
+
+.input-box button:hover {
+  transform: scale(1.08);
+
+  background: #7375ff;
+}
+
+/* ===========================
+       FILTER BUTTONS
+    =========================== */
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  height: 44px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.light .filters button {
+  color: black;
+  border: 1px solid rgba(255, 255, 255, 0.677);
+}
+
+.filters button:hover {
+  background: #5d5fef;
+}
+
+.filters .active {
+  background: #5d5fef;
+}
+
+/* ===========================
+       TASK LIST
+    =========================== */
+
+.task-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar */
+
+.task-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
+}
+
+.task {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+body.light .task {
+  background: rgba(93, 92, 92, 0.141);
+  border: 1px solid rgba(43, 42, 42, 0.39);
+}
+
+.task:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.task label {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+}
+
+/* hide checkbox */
+
+.task input {
+  display: none;
+}
+
+/* circle */
+
+.circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #888;
+  transition: 0.3s;
+}
+
+.task input:checked + .circle {
+  background: #5d5fef;
+  border-color: #5d5fef;
+}
+
+.task p {
+  font-size: 17px;
+}
+
+.task input:checked ~ p {
+  text-decoration: line-through;
+}
+
+/* ===========================
+       FOOTER
+    =========================== */
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+  color: #d2d2d2;
+  font-size: 15px;
+}
+
+body.light .footer {
+  color: black;
+}
+
+.clear-btn {
+  border: none;
+  background: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+body.light .clear-btn {
+  color: #f50606;
+}
+
+.clear-btn:hover {
+  color: white;
+}
+
+/* ===========================
+       RESPONSIVE
+    =========================== */
+
+@media (max-width: 768px) {
+  .todo-container {
+    width: 95%;
+    height: 90vh;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* ==========================================
+            PLANNER POPUP
+========================================== */
+
+.planner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(18, 20, 28, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+}
+
+/* Light Theme */
+
+body.light .planner-container {
+  background: rgba(235, 235, 235, 0.45);
+}
+
+/* ========================= */
+
+.planner-card {
+  width: 540px;
+  max-width: 95%;
+  height: 560px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 18px;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Light */
+
+body.light .planner-card {
+  background: rgba(255, 255, 255, 0.35);
+  color: #4a554a;
+}
+
+/* ========================= */
+
+.planner-card h1 {
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+/* ========================= */
+
+.planner-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* ========================= */
+
+.time-box {
+  width: 130px;
+}
+
+.time-box input {
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 0 15px;
+  outline: none;
+}
+
+body.light .time-box input {
+  background: white;
+  color: #4a554a;
+  border: 1px solid #d5d5d5;
+}
+
+/* ========================= */
+
+#plannerText {
+  flex: 1;
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 0 15px;
+  outline: none;
+}
+
+body.light #plannerText {
+  background: white;
+  color: #4a554a;
+  border: 1px solid #d5d5d5;
+}
+
+#plannerText::placeholder {
+  color: #999;
+}
+
+/* ========================= */
+
+#plannerAddBtn {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #5d5fef;
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+#plannerAddBtn:hover {
+  transform: scale(1.08);
+}
+
+/* ========================= */
+
+.planner-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.planner-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.planner-list::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 10px;
+}
+
+/* ========================= */
+
+.planner-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light .planner-item {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid #ddd;
+}
+
+.planner-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.planner-time {
+  min-width: 75px;
+  color: #ffb45c;
+  font-weight: 600;
+}
+
+.planner-text {
+  font-size: 17px;
+}
+
+.delete-plan {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #ff4b4b;
+  background: transparent;
+  transition: 0.3s;
+}
+
+.delete-plan:hover {
+  background: rgba(255, 0, 0, 0.12);
+}
+
+/* ========================= */
+
+@media (max-width: 768px) {
+  .planner-card {
+    width: 95%;
+    height: 90vh;
+  }
+
+  .planner-input {
+    flex-wrap: wrap;
+  }
+
+  .time-box {
+    width: 100%;
+  }
+
+  #plannerText {
+    width: 100%;
+  }
+
+  #plannerAddBtn {
+    width: 100%;
+  }
+}
+
+/* ==========================================
+              GOALS POPUP
+========================================== */
+
+.goals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(18, 20, 28, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+}
+
+/* Light Theme */
+
+body.light .goals-container {
+  background: rgba(235, 235, 235, 0.45);
+}
+
+/* ===================================== */
+
+.goals-card {
+  width: 540px;
+  max-width: 95%;
+  height: 560px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: 18px;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Light Theme */
+
+body.light .goals-card {
+  background: rgba(255, 255, 255, 0.35);
+  color: #4a554a;
+}
+
+/* ===================================== */
+
+.goals-card h1 {
+  margin-bottom: 22px;
+  letter-spacing: 2px;
+}
+
+/* ===================================== */
+
+.current-goal {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.current-goal small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.current-goal h2 {
+  font-size: 28px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+body.light .current-goal {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid #ddd;
+}
+
+/* ===================================== */
+
+.goal-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.goal-input input {
+  flex: 1;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 16px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.goal-input input::placeholder {
+  color: #999;
+}
+
+body.light .goal-input input {
+  background: white;
+  color: #4a554a;
+  border: 1px solid #ddd;
+}
+
+.goal-input button {
+  width: 45px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #5d5fef;
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.goal-input button:hover {
+  transform: scale(1.08);
+}
+
+/* ===================================== */
+
+.goal-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.goal-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.goal-list::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 20px;
+}
+
+/* ===================================== */
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.light .goal-item {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #ddd;
+}
+
+/* ===================================== */
+
+.goal-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.goal-left input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.goal-text {
+  font-size: 17px;
+}
+
+.goal-left input:checked + .goal-text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ===================================== */
+
+.goal-delete {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  color: #ff4d4d;
+  transition: 0.3s;
+}
+
+.goal-delete:hover {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+/* ===================================== */
+
+.goal-footer {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goal-footer button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ===================================== */
+
+@media (max-width: 768px) {
+  .goals-card {
+    width: 95%;
+    height: 90vh;
+  }
+
+  .goal-input {
+    flex-wrap: wrap;
+  }
+
+  .goal-input button {
+    width: 100%;
+    height: 45px;
+  }
+
+  .current-goal h2 {
+    font-size: 22px;
+  }
+}
+
+/* ==========================================
+            POMODORO POPUP
+========================================== */
+
+.pomodoro-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(15, 18, 30, 0.72);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
+/* ============================= */
+
+body.light .pomodoro-container {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================= */
+
+.pomodoro-card {
+  width: 540px;
+  max-width: 95%;
+  height: 610px;
+  padding: 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+body.light .pomodoro-card {
+  background: rgba(255, 255, 255, 0.45);
+  color: #4a554a;
+}
+
+/* ============================= */
+
+.pomodoro-card h1 {
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+/* ============================= */
+
+.pomo-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pomo-tab {
+  flex: 1;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body.light .pomo-tab {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.pomo-tab.active {
+  background: #7be495;
+  color: #4a554a;
+  font-weight: 700;
+}
+
+/* ============================= */
+
+.timer-wrapper {
+  width: 260px;
+  height: 260px;
+  margin: auto;
+  position: relative;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+/* background ring */
+
+.ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 10;
+}
+
+body.light .ring-bg {
+  stroke: #ddd;
+}
+
+/* progress */
+
+.ring-progress {
+  fill: none;
+  stroke: #7be495;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 565.48;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.4s linear;
+}
+
+/* ============================= */
+
+.timer-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#timer {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* ============================= */
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.timer-controls button {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+body.light .timer-controls button {
+  background: white;
+  border: 1px solid #ddd;
+}
+
+.timer-controls button:hover {
+  transform: scale(1.08);
+}
+
+#startPauseTimer {
+  background: #7be495;
+  color: #4a554a;
+  border: none;
+}
+
+/* ============================= */
+
+.timer-footer {
+  margin-top: 28px;
+  text-align: center;
+  opacity: 0.75;
+  font-size: 15px;
+}
+
+/* ============================= */
+
+@media (max-width: 768px) {
+  .pomodoro-card {
+    width: 95%;
+    height: 92vh;
+    padding: 20px;
+  }
+
+  .timer-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  .progress-ring {
+    width: 220px;
+    height: 220px;
+  }
+
+  .progress-ring circle {
+    cx: 110;
+    cy: 110;
+    r: 80;
+  }
+
+  #timer {
+    font-size: 46px;
+  }
+
+  .pomo-tabs {
+    flex-wrap: wrap;
+  }
+
+  .pomo-tab {
+    min-width: 100%;
+  }
+}
