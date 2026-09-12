@@ -21,7 +21,7 @@
 
 html {
   scroll-behavior: smooth;
-  position: fixed;
+  /* position: fixed; */
 }
 
 body {
@@ -32,8 +32,9 @@ body {
   color: #fff;
   overflow-x: hidden;
   transition: 0.4s;
-  position: fixed;
-  height: 100vh;
+  /* position: fixed; */
+  min-height: 100vh;
+  height: auto;
   width: 100%;
 
   margin: 0;
@@ -838,7 +839,10 @@ body.light .clear-btn {
 @media (max-width: 768px) {
   .todo-container {
     width: 95%;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 20px;
   }
 
@@ -885,7 +889,10 @@ body.light .planner-container {
 .planner-card {
   width: 540px;
   max-width: 95%;
-  height: 560px;
+  min-height: 560px;
+  height: auto;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1056,7 +1063,10 @@ body.light .planner-item {
 @media (max-width: 768px) {
   .planner-card {
     width: 95%;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .planner-input {
@@ -1307,7 +1317,10 @@ body.light .goal-item {
 @media (max-width: 768px) {
   .goals-card {
     width: 95%;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .goal-input {
@@ -1352,7 +1365,10 @@ body.light .pomodoro-container {
 .pomodoro-card {
   width: 540px;
   max-width: 95%;
-  height: 610px;
+  min-height: 610px;
+  height: auto;
+  max-height: 92vh;
+  overflow-y: auto;
   padding: 28px;
   position: relative;
   display: flex;
@@ -1510,7 +1526,10 @@ body.light .timer-controls button {
 @media (max-width: 768px) {
   .pomodoro-card {
     width: 95%;
-    height: 92vh;
+    min-height: 92vh;
+    height: auto;
+    max-height: 92vh;
+    overflow-y: auto;
     padding: 20px;
   }
 
