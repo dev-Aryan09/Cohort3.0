@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FinTrack Pro</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- login form -->
+
+    <div class="register" id="loginContainer">
+      <div class="card">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Login to FinTrack Pro</p>
+
+        <form>
+          <label for="loginUser">Choose a Username</label>
+          <input
+            id="loginUser"
+            type="text"
+            name="username"
+            placeholder="Enter The Username"
+          />
+
+          <label for="loginPass">Password</label>
+          <input
+            id="loginPass"
+            type="password"
+            name="password"
+            placeholder="Enter The Password"
+          />
+
+          <p class="form-message" id="loginMessage" aria-live="polite"></p>
+          <button type="submit">Login</button>
+        </form>
+
+        <p class="login-text">
+          Don't have an account?
+          <span>Register here</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Register form -->
+
+    <div class="register" id="registerContainer">
+      <div class="card">
+        <h1>Create Account</h1>
+        <p class="subtitle">Join FinTrack Pro</p>
+
+        <form>
+          <label for="regUser">Choose a Username</label>
+          <input
+            id="regUser"
+            type="text"
+            name="username"
+            placeholder="Enter The Username"
+          />
+
+          <label for="regPass">Password</label>
+          <input
+            id="regPass"
+            type="password"
+            name="password"
+            placeholder="Enter The Password"
+          />
+
+          <p class="form-message" id="registerMessage" aria-live="polite"></p>
+          <button type="submit">Register</button>
+        </form>
+
+        <p class="login-text">
+          Already have an account?
+          <span>Login here</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="container">
+      <!-- ================= Sidebar ================= -->
+
+      <aside class="sidebar">
+        <button
+          type="button"
+          id="closeSidebarBtn"
+          class="close-sidebar"
+          aria-label="Close menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div>
+          <div class="logo">
+            <i class="fa-solid fa-layer-group"></i>
+
+            <div>
+              <h2>FinTrack Pro</h2>
+
+              <span>Enterprise Finance</span>
+            </div>
+          </div>
+
+          <nav>
+            <a href="#" class="active">
+              <i class="fa-solid fa-table-columns"></i>
+
+              Dashboard
+            </a>
+
+            <a href="#" id="settingBtn">
+              <i class="fa-solid fa-gear"></i>
+
+              Settings
+            </a>
+          </nav>
+        </div>
+
+        <button class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+
+          Add Transaction
+        </button>
+      </aside>
+
+      <!-- ================= Main ================= -->
+
+      <main class="main">
+        <!-- Header -->
+
+        <header class="header">
+          <div class="header-left">
+            <button id="hamburgerBtn" class="hamburger" aria-label="Open menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+
+          <div class="header-right">
+            <span>lalchand meghwal</span>
+
+            <button title="Logout here" id="logout">
+              <i class="fa-solid fa-right-from-bracket"></i>
+
+              Logout
+            </button>
+          </div>
+        </header>
+
+        <!-- Dashboard -->
+
+        <section class="dashboard">
+          <h1>Financial Overview</h1>
+          <p>Real-time tracking application</p>
+
+          <!-- OVERVIEW CARDS -->
+
+          <div class="overview-grid">
+            <!-- Balance -->
+
+            <div class="overview-card">
+              <div class="card-top">
+                <div>
+                  <h4>Current Balance</h4>
+
+                  <h2 id="balance">₹0.00</h2>
+                </div>
+
+                <div class="icon blue">
+                  <i class="fa-solid fa-wallet"></i>
+                </div>
+              </div>
+
+              <p>Total available balance</p>
+            </div>
+
+            <!-- Income -->
+
+            <div class="overview-card">
+              <div class="card-top">
+                <div>
+                  <h4>Total Income</h4>
+
+                  <h2 id="income">₹0.00</h2>
+                </div>
+
+                <div class="icon green">
+                  <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+              </div>
+
+              <p>Money received</p>
+            </div>
+
+            <!-- Expense -->
+
+            <div class="overview-card">
+              <div class="card-top">
+                <div>
+                  <h4>Total Expense</h4>
+
+                  <h2 id="expense">₹0.00</h2>
+                </div>
+
+                <div class="icon red">
+                  <i class="fa-solid fa-arrow-trend-down"></i>
+                </div>
+              </div>
+
+              <p>Total spending</p>
+            </div>
+
+            <!-- Transactions -->
+
+            <div class="overview-card">
+              <div class="card-top">
+                <div>
+                  <h4>Transactions</h4>
+
+                  <h2 id="transactionCount">0</h2>
+                </div>
+
+                <div class="icon purple">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+              </div>
+
+              <p>Total records</p>
+            </div>
+          </div>
+
+          <!-- =========================
+                                      CASH FLOW ANALYSIS
+                                ========================= -->
+
+          <section class="chart-section">
+            <div class="chart-header">
+              <div>
+                <h2>Cash Flow Analysis</h2>
+
+                <p>Income vs Expense Overview</p>
+              </div>
+            </div>
+
+            <div class="chart-box">
+              <canvas id="financeChart"></canvas>
+            </div>
+          </section>
+
+          <!-- =====================================
+                                        TRANSACTIONS
+                                ====================================== -->
+
+          <section class="transaction-section">
+            <!-- Header -->
+
+            <div class="transaction-header">
+              <div>
+                <h2>Recent Transactions</h2>
+
+                <p>Manage all your income & expenses</p>
+              </div>
+
+              <div class="transaction-actions">
+                <!-- Search -->
+
+                <div class="search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+
+                  <input type="text" id="searchInput" placeholder="Search..." />
+                </div>
+
+                <!-- Filter -->
+
+                <label for="filterType" class="sr-only"
+                  >Filter transactions</label
+                >
+                <select id="filterType" aria-label="Filter transactions">
+                  <option value="all">All</option>
+
+                  <option value="income">Income</option>
+
+                  <option value="expense">Expense</option>
+                </select>
+
+                <label for="sortBy" class="sr-only">Sort transactions</label>
+                <select id="sortBy" aria-label="Sort transactions">
+                  <option value="newest">Newest First</option>
+
+                  <option value="oldest">Oldest First</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Table -->
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+
+                    <th>Description</th>
+
+                    <th>Category</th>
+
+                    <th>Type</th>
+
+                    <th>Amount</th>
+
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody id="transactionTable">
+                  <tr>
+                    <td>12 Jul 2026</td>
+
+                    <td>Salary</td>
+
+                    <td>Job</td>
+
+                    <td>
+                      <span class="income-tag"> Income </span>
+                    </td>
+
+                    <td class="income-color">+ ₹45,000</td>
+
+                    <td>
+                      <button class="edit-btn" aria-label="Edit transaction">
+                        <i class="fa-solid fa-pen"></i>
+                      </button>
+
+                      <button
+                        class="delete-btn"
+                        aria-label="Delete transaction"
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>13 Jul 2026</td>
+
+                    <td>Groceries</td>
+
+                    <td>Food</td>
+
+                    <td>
+                      <span class="expense-tag"> Expense </span>
+                    </td>
+
+                    <td class="expense-color">- ₹2,450</td>
+
+                    <td>
+                      <button class="edit-btn" aria-label="Edit transaction">
+                        <i class="fa-solid fa-pen"></i>
+                      </button>
+
+                      <button
+                        class="delete-btn"
+                        aria-label="Delete transaction"
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr id="emptyRow" class="empty-row">
+                    <td colspan="6">
+                      <div class="empty">
+                        <i class="fa-regular fa-folder-open"></i>
+
+                        <h3>No Transactions Found</h3>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===========================
+    ADD TRANSACTION MODAL
+=========================== -->
+
+    <div class="modal" id="transactionModal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>Add Transaction</h2>
+
+          <button type="button" id="closeModal" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="transactionForm">
+          <!-- Type -->
+
+          <div class="form-group">
+            <label for="type" class="sr-only">Transaction type</label>
+
+            <select id="type" aria-label="Transaction type">
+              <option value="income">Income</option>
+
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+
+          <!-- Description -->
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="Enter description"
+            />
+          </div>
+
+          <!-- Amount -->
+
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="₹ 0" />
+          </div>
+
+          <!-- Date -->
+
+          <div class="form-group">
+            <label for="date">Date</label>
+
+            <input type="date" id="date" aria-label="Transaction date" />
+          </div>
+
+          <!-- Category -->
+
+          <div class="form-group">
+            <label>Category</label>
+
+            <!-- <input type="text" id="category" placeholder="Food"> -->
+
+            <select id="category" aria-label="Filter transactions">
+              <option value="" disabled="" selected="">
+                Select a category
+              </option>
+              <option value="Food &amp; Dining">Food &amp; Dining</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Recharge &amp; Bills">Recharge &amp; Bills</option>
+              <option value="Petrol &amp; Auto">Petrol &amp; Auto</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Salary">Salary</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <p
+            class="form-message"
+            id="transactionMessage"
+            aria-live="polite"
+          ></p>
+
+          <button type="submit" class="save-btn">Save Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" ">Transaction Added Successfully</div>
+
+    <!-- ===========================
+        SETTINGS MODAL
+=========================== -->
+
+    <div class="setting-modal" id="settingModal">
+      <div class="setting-card">
+        <div class="setting-header">
+          <h2>Preferences</h2>
+
+          <button id="closeSetting" aria-label="Close settings">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Theme -->
+
+        <div class="setting-item">
+          <div>
+            <h4>Dark Mode</h4>
+
+            <p>Switch Theme</p>
+          </div>
+
+          <label class="switch" for="themeToggle">
+            <input
+              type="checkbox"
+              id="themeToggle"
+              aria-label="Toggle dark mode"
+            />
+
+            <span class="slider"></span>
+          </label>
+
+          <label for="themeToggle" class="sr-only">Toggle dark mode</label>
+        </div>
+
+        <!-- Reset -->
+
+        <div class="setting-item">
+          <div>
+            <h4>Reset All Data</h4>
+
+            <p>Delete every transaction</p>
+          </div>
+
+          <button id="resetData">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
