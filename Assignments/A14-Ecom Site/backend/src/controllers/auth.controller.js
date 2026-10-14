@@ -1,6 +1,10 @@
 import bcrypt from "bcryptjs";
 import userModel from "../models/auth.model.js";
-import { generateAccessToken, generateRefreshToken } from "../utils/auth.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+  readRefreshToken,
+} from "../utils/auth.js";
 
 /**
  * @description Register an user and save data in DB from req.body
@@ -133,6 +137,87 @@ export const loginUserController = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Internal Server Error while login",
+      error,
+    });
+  }
+};
+
+/**
+ * @description  Issue a new access token
+ * @param req.cookies -> object
+ * @param req.cookies.refreshToken -> string
+ */
+export const rotateTokensController = async (req, res) => {
+  const { refreshToken } = req.cookies;
+
+  if (!refreshToken) {
+    return res.status(401).json({
+      message: "Missing Refresh Token",
+    });
+  }
+
+  try {
+    const decoded = readRefreshToken(refreshToken);
+
+    if (!decoded) {
+      return res.status(401).json({
+        message: "Unauthorized, invalid or expired refresh token",
+        errors: [
+          {
+            field: "token",
+            message: "Refresh token is invalid or expired",
+          },
+        ],
+      });
+    }
+
+    const user = await userModel.findById(decoded.userId);
+
+    // Check if user is null by any chance
+    if (!user) {
+      return res.status(401).json({
+        message: "Unauthorized to login",
+        errors: [
+          {
+            field: "credentials",
+            message: "Invalid email or password",
+          },
+        ],
+      });
+    }
+
+    if (refreshToken !== user.refreshToken) {
+      // In case, someone trying to get in with tempered token
+      await userModel.findByIdAndUpdate(user._id, {
+        refreshToken: null,
+      });
+
+      return res.status(401).json({
+        message: "Unauthorized, refresh token mismatch",
+      });
+    }
+
+    const accessToken = generateAccessToken({ userId: user._id });
+
+    const newRefreshToken = generateRefreshToken({ userId: user._id });
+
+    // updating document with created refresh token
+    await userModel.findByIdAndUpdate(user._id, {
+      refreshToken: newRefreshToken,
+    });
+
+    // setting refresh token in cookie storage
+    res.cookie("refreshToken", newRefreshToken, { httpOnly: true });
+
+    return res.status(200).json({
+      success: true,
+      message: "Tokens rotated successfully",
+      accessToken: accessToken,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error while rotating tokens",
       error,
     });
   }

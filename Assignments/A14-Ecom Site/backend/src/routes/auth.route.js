@@ -2,6 +2,7 @@ import express from "express";
 import {
   loginUserController,
   registerUserController,
+  rotateTokensController,
 } from "../controllers/auth.controller.js";
 import {
   loginValidator,
@@ -23,5 +24,12 @@ router.post("/register", registerValidator, registerUserController);
  * @response status code 200 (if successful)
  */
 router.post("/login", loginValidator, loginUserController);
+
+/**
+ * @POST /api/auth/refresh-token
+ * @param req.cookies = {refreshToken}
+ * @response status code 200 (if successful)
+ */
+router.post("/refresh-token", rotateTokensController);
 
 export default router;
